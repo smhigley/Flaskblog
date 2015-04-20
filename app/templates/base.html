@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{title}}</title>
+
+    <link href='http://fonts.googleapis.com/css?family=OpenSans:400,700' rel='stylesheet' type='text/css'>
+</head>
+<body>
+
+  <header class="page-header" role="banner">
+    <nav class="main-menu" role="navigation">
+      <div class="content-row">
+        <a href="/" class="logo-simple">Logo</a>
+        <ul class="menu"></ul>
+        <ul class="mobile mobile-menu">
+          <li><a href="#" class="menu-trigger">Menu</a></li>
+        </ul>
+      </div>
+    </nav>
+    <!-- End header -->
+  </header>
+
+  <div class="content">
+    {% block content %}{% endblock %}
+  </div>
+
+  <footer class="page-footer" role="contentinfo">
+  </footer>
+
+</body>
+</html>
+
