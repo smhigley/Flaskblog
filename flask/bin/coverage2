@@ -1,4 +1,4 @@
-#!/Users/Sarah/Documents/python/sampleapp/flask/bin/python
+#!/Users/Sarah/Documents/python/flaskblog/flask/bin/python
 # EASY-INSTALL-ENTRY-SCRIPT: 'coverage==3.7.1','console_scripts','coverage2'
 __requires__ = 'coverage==3.7.1'
 import sys

@@ -1,0 +1,87 @@
+body {
+  font-family: $body-font;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  color: $dark;
+}
+
+.menu {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.hide-text {
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+p, ul, ol {
+  margin: 0 0 em-calc(30, 15);
+  font-size: 15px;
+  line-height: #{(25/15)};
+}
+
+h1 {
+  margin: 0;
+  color: $blue;
+  font-size: 36px;
+  font-weight: normal;
+  line-height: #{(54/36)};
+}
+
+h2, h3, h4, h5, h6 {
+  margin: 0 0 10px;
+}
+
+h2 {
+  font-size: 32px;
+  font-weight: bold;
+  line-height: #{(38/32)};
+  color: $brown;
+  @include bp($bp-typography) {
+    font-size: 36px;
+  }
+}
+
+h3 {
+  font-family: $heading-font;
+  font-size: 22px;
+  line-height: #{(28/22)};
+  font-weight: bold;
+  text-transform: uppercase;
+  color: $blue;
+  @include bp($bp-typography) {
+    font-size: 26px;
+  }
+}
+
+h4 {
+  font-family: $heading-font;
+  font-size: 20px;
+  line-height: #{(30/20)};
+  font-weight: normal;
+  font-style: italic;
+}
+
+a {
+  text-decoration: none;
+  &, &:before, &:after {
+    @include transition(background 0.25s ease, color 0.25s ease);
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+img {
+  max-width: 100%;
+}
+svg {
+  // odd height fix for iphone
+  height: 100%;
+}
+

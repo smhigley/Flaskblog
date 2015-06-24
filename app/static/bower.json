@@ -1,0 +1,9 @@
+{
+  "name": "TheLongTrip",
+  "version": "1.0.0",
+  "dependencies": {
+    "monkee-mixins": "latest",
+    "normalize.css": "latest",
+    "fastclick": "1.0.6"
+  }
+}

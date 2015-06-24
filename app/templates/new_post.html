@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>New Post</h1>
+  <form action="" method="post" name="new-post">
+      {{ form.hidden_tag() }}
+      <p>
+        Post Title:<br>
+        {{ form.title(size=80, maxlength=64) }}
+        {% for error in form.title.errors %}
+          <div class="error" style="color: red;">[{{ error }}]</div>
+        {% endfor %}
+      </p>
+      <p>
+        Slug:<br>
+        {{ form.slug(size=80, maxlength=32) }}
+        {% for error in form.slug.errors %}
+          <div class="error" style="color: red;">[{{ error }}]</div>
+        {% endfor %}
+      </p>
+      <p>
+        Post Content:<br>
+        {{ form.body(size=80, maxlength=140) }}
+        {% for error in form.body.errors %}
+          <div class="error" style="color: red;">[{{ error }}]</div>
+        {% endfor %}
+      </p>
+      <p>
+        Featured Image:<br>
+        {{ form.image(size=80, maxlength=32) }}
+        {% for error in form.image.errors %}
+          <div class="error" style="color: red;">[{{ error }}]</div>
+        {% endfor %}
+      </p>
+      <button type="submit">Create Post</button>
+  </form>
+{% endblock %}
