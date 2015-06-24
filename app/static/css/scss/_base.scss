@@ -31,31 +31,17 @@ $total-columns: 12;
 $column-gutter: em-calc(30);
 
 // global breakpoint vars
-$bp-columns: 680;
-$bp-typography: 800;
-$bp-menu: 800;
+$bp-layout: 780;
+$bp-columns: 880;
+$bp-typography: 900;
+$bp-menu: 920;
 
 // color variables
-$dark: #262730;
+$dark: #2a3539;
+$blue: #00a6a6;
+$tan: #fce4cc;
+$grey: #e7ecef;
 
 // fonts
-$body-font: 'Noto Sans', sans-serif;
-$heading-font: 'Noto Serif', serif;
-
-@mixin placeholder() {
-  &::-webkit-input-placeholder {
-    @content;
-  }
-
-  &:-moz-placeholder { /* Firefox 18- */
-    @content;
-  }
-
-  &::-moz-placeholder {  /* Firefox 19+ */
-    @content;
-  }
-
-  &:-ms-input-placeholder {
-    @content;
-  }
-}
+$body-font: 'Open Sans', sans-serif;
+$heading-font: 'Fjalla One', sans-serif;

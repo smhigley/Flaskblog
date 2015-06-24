@@ -39,28 +39,22 @@ html {
 .container {
   width: 100%;
   overflow: hidden;
-  background-color: #fff;
-
-  // mobile menu transition
-  @include bp(false, $bp-menu) {
-    @include transform(translate3d(0, 0, 0));
-    @include transition(all 0.5s ease);
-    .menu-open & {
-      @include transform(translate3d(-240px, 0, 0));
-    }
-  }
-
-}
-
-.page-content {
-  @include grid-column(12);
-  margin-top: em-calc(20);
-  @include bp($bp-menu) {
-    width: 70%;
-    margin-top: em-calc(60);
-  }
-  @include bp(920) {
-    width: 75%;
-    padding-right: em-calc(60);
+  padding: em-calc(50) em-calc(30);
+  @include bp($bp-layout) {
+    width: 66.6666%;
   }
 }
+
+.aside {
+  position: relative;
+  width: 100%;
+  padding-bottom: 33%;
+  @include bp($bp-layout) {
+    position: fixed;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 33.3333%;
+  }
+}
+

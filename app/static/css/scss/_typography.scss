@@ -40,7 +40,6 @@ h2 {
   font-size: 32px;
   font-weight: bold;
   line-height: #{(38/32)};
-  color: $brown;
   @include bp($bp-typography) {
     font-size: 36px;
   }

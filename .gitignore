@@ -1,2 +1,5 @@
 app/config.py
 tmp/
+db_repository/
+app/static/node_modules/
+app/static/components/

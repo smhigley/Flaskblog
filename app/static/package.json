@@ -1,6 +1,8 @@
 {
   "name": "TheLongTrip",
   "version": "1.0.0",
+  "description": "A travel blog made with Flask",
+  "homepage": "http://thelongtrip.org",
   "dependencies": {},
   "devDependencies": {
     "gulp": "latest",

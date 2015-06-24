@@ -4,45 +4,72 @@
 <!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
-    <meta charset="utf-8" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{{title}}</title>
+  <meta name="description" content="">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
 
-    <link href='http://fonts.googleapis.com/css?family=OpenSans:400,700' rel='stylesheet' type='text/css'>
+  <!-- Open Graph -->
+  <meta property="og:title" content="">
+  <meta property="og:description" content="">
+  <meta property="og:image" content="">
+  <meta property="og:type" content="">
+  <meta property="og:site_name" content="">
+
+  <!-- May the source be with you! -->
+
+  <title>{{title}}</title>
+
+  <link rel="author" href="/humans.txt">
+  <link rel="dns-prefetch" href="//ajax.googleapis.com">
+  <link rel="sitemap" href="/sitemap.xml" type="application/xml" title="Sitemap">
+
+  <link rel="icon" href="/static/images/favicon.png" />
+
+  <link rel="stylesheet" href="/static/css/app.min.css">
+  <link href='http://fonts.googleapis.com/css?family=Fjalla+One|Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
+
+  <script src="/static/js/custom.modernizr.js"></script>
 </head>
 <body>
+  <aside class="sidebar">
+  </aside><!-- /.sidebar -->
 
-  <header class="page-header" role="banner">
-    <nav class="main-menu" role="navigation">
-      <div class="content-row">
-        <a href="/" class="logo-simple">Logo</a>
-        <ul class="menu"></ul>
-        <ul class="mobile mobile-menu">
-          <li><a href="#" class="menu-trigger">Menu</a></li>
-        </ul>
-      </div>
-    </nav>
-    <!-- End header -->
-  </header>
+  <div class="container">
 
-  <div class="content">
-    {% with messages = get_flashed_messages() %}
-      {% if messages %}
-        <ul>
-        {% for message in messages %}
-            <li>{{ message }} </li>
-        {% endfor %}
-        </ul>
-      {% endif %}
-    {% endwith %}
+    <header class="page-header" role="banner">
+      <nav class="main-menu" role="navigation">
+        <div class="content-row">
+          <a href="/" class="logo-simple">Logo</a>
+          <ul class="menu"></ul>
+          <ul class="mobile mobile-menu">
+            <li><a href="#" class="menu-trigger">Menu</a></li>
+          </ul>
+        </div>
+      </nav>
+      <!-- End header -->
+    </header>
 
-    {% block content %}{% endblock %}
-  </div>
+    <div class="content">
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          <ul class="alerts menu">
+          {% for message in messages %}
+              <li>{{ message }} </li>
+          {% endfor %}
+          </ul>
+        {% endif %}
+      {% endwith %}
 
-  <footer class="page-footer" role="contentinfo">
-  </footer>
+      {% block content %}{% endblock %}
+    </div>
 
+    <footer class="page-footer" role="contentinfo">
+    </footer>
+
+  </div><!-- /.container -->
 </body>
 </html>
 
