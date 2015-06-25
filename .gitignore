@@ -3,3 +3,6 @@ tmp/
 db_repository/
 app/static/node_modules/
 app/static/components/
+app/static/.sass-cache/
+*.pyc
+flask/

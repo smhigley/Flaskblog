@@ -1,7 +1,6 @@
 from flask import render_template, flash, redirect, session, url_for, request, g
-from flask.ext.login import login_user, logout_user, current_user, \
-    login_required
-from app import app, db, login_manager, oid
+from flask.ext.login import login_user, logout_user, current_user, login_required
+from app import app, db, login_manager, oauth
 from .forms import LoginForm, PageForm, PostForm
 from .models import User, Post, Page
 
@@ -26,8 +25,50 @@ def index():
   return render_template('index.html', title='Home', user=user, posts=posts)
 
 # Login page
+facebook = oauth.remote_app('facebook',
+  base_url='https://graph.facebook.com/',
+  request_token_url=None,
+  access_token_url='/oauth/access_token',
+  authorize_url='https://www.facebook.com/dialog/oauth',
+  consumer_key=app.config['FACEBOOK_APP_ID'],
+  consumer_secret=app.config['FACEBOOK_APP_SECRET'],
+  request_token_params={'scope': 'email'}
+)
+
+@app.route('/oauth-authorized')
+@facebook.authorized_handler
+def oauth_authorized(resp):
+  next_url = request.args.get('next') or url_for('index')
+  if resp is None:
+    flash(u'You denied the request to sign in.')
+    return redirect(next_url)
+
+  session['oauth_token'] = (resp['access_token'], '')
+  fb_user = facebook.get('/me')
+
+  user = User.query.filter_by(social_id=fb_user.data['id']).first()
+  if user is None:
+    user = User(social_id=fb_user.data['id'], nickname=fb_user.data['name'], email=fb_user.data['email'])
+    db.session.add(user)
+    db.session.commit()
+    # flash(u'Access Denied. The user %s does not exist.' % fb_user.data['name'])
+    return redirect(next_url)
+
+  remember_me = False
+  if 'remember_me' in session:
+    remember_me = session['remember_me']
+    session.pop('remember_me', None)
+
+  login_user(user, remember=remember_me)
+
+  flash('You were signed in as %s' % fb_user.data['name'])
+  return redirect(next_url)
+
+@facebook.tokengetter
+def get_facebook_oauth_token():
+  return session.get('oauth_token')
+
 @app.route('/login', methods=['GET', 'POST'])
-@oid.loginhandler
 def login():
   if g.user is not None and g.user.is_authenticated():
     return redirect(url_for('index'))
@@ -35,36 +76,13 @@ def login():
   form = LoginForm()
   if form.validate_on_submit():
     session['remember_me'] = form.remember_me.data
-    return oid.try_login(form.openid.data, ask_for=['email', 'nickname'], ask_for_optional=['fullname'])
+    return facebook.authorize(callback=url_for('oauth_authorized', next=request.args.get('next') or request.referrer or None, _external=True))
 
   return render_template('login.html', title='Sign In', form=form, providers=app.config['OPENID_PROVIDERS'])
 
 @app.before_request
 def before_request():
   g.user = current_user
-
-@oid.after_login
-def after_login(resp):
-  if resp.email is None or resp.email == "":
-    flash('Invalid login. Please try again.')
-    return redirect(url_for('login'))
-
-  user = User.query.filter_by(email=resp.email).first()
-  if user is None:
-    nickname = resp.nickname
-    if nickname is None or nickname == "":
-      nickname = resp.email.split('@')[0]
-    user = User(nickname=nickname, email=resp.email)
-    db.session.add(user)
-    db.session.commit()
-
-  remember_me = False
-  if 'remember_me' in session:
-    remember_me = session['remember_me']
-    session.pop('remember_me', None)
-
-  login_user(user, remember = remember_me)
-  return redirect(request.args.get('next') or url_for('index'))
 
 # Pages
 @app.route('/<slug>')
@@ -73,7 +91,7 @@ def view_page(slug):
   if page is None:
     flash('The URL "%s" was not found' % slug)
     return redirect(url_for('index'))
-  return render_template('page.html', page=page)
+  return render_template('page.html', title=page.title, page=page)
 
 @app.route('/page/new', methods=['GET', 'POST'])
 #@login_required
