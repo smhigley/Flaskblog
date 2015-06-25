@@ -417,7 +417,7 @@ html {
   padding-right: 0.9375em;
   width: 100%;
   float: left; }
-  @media only screen and (min-width: 42.5em) {
+  @media only screen and (min-width: 55em) {
     .half {
       width: 50%; } }
 
@@ -426,21 +426,30 @@ html {
   padding-right: 0.9375em;
   width: 100%;
   float: left; }
-  @media only screen and (min-width: 42.5em) {
+  @media only screen and (min-width: 55em) {
     .third {
       width: 33.3333%; } }
 
 .container {
   width: 100%;
   overflow: hidden;
-  background-color: #fff; }
+  padding: 3.125em 1.875em; }
+  @media only screen and (min-width: 48.75em) {
+    .container {
+      width: 66.6666%; } }
 
-.page-content {
-  padding-left: 0.9375em;
-  padding-right: 0.9375em;
+.sidebar {
+  position: relative;
   width: 100%;
-  float: left;
-  margin-top: 1.25em; }
+  padding-bottom: 33%;
+  background-color: #00a6a6; }
+  @media only screen and (min-width: 48.75em) {
+    .sidebar {
+      position: fixed;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 33.3333%; } }
 
 body {
   font-family: "Open Sans", sans-serif;
@@ -478,7 +487,7 @@ h2 {
   font-size: 32px;
   font-weight: bold;
   line-height: 1.1875; }
-  @media only screen and (min-width: 50em) {
+  @media only screen and (min-width: 56.25em) {
     h2 {
       font-size: 36px; } }
 
@@ -489,7 +498,7 @@ h3 {
   font-weight: bold;
   text-transform: uppercase;
   color: #00a6a6; }
-  @media only screen and (min-width: 50em) {
+  @media only screen and (min-width: 56.25em) {
     h3 {
       font-size: 26px; } }
 
@@ -516,5 +525,139 @@ img {
 
 svg {
   height: 100%; }
+
+.ol-hidden, .ol-collapsed {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+  filter: alpha(opacity=0); }
+
+#map {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  padding: 0; }
+  #map .location-marker {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    background-color: #00a6a6;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    z-index: 5; }
+    #map .location-marker:before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+      border-radius: 50%;
+      border: 4px solid #00a6a6;
+      -webkit-transform: scale(1);
+      -moz-transform: scale(1);
+      -ms-transform: scale(1);
+      -o-transform: scale(1);
+      transform: scale(1);
+      -webkit-animation: map-marker 2s infinite;
+      -moz-animation: map-marker 2s infinite;
+      -o-animation: map-marker 2s infinite;
+      animation: map-marker 2s infinite; }
+    #map .location-marker span {
+      position: absolute;
+      width: 120px;
+      top: 100%;
+      left: 10px;
+      font-family: "Fjalla One", sans-serif;
+      text-align: center;
+      -webkit-transform: translate(-50%, 10px);
+      -moz-transform: translate(-50%, 10px);
+      -ms-transform: translate(-50%, 10px);
+      -o-transform: translate(-50%, 10px);
+      transform: translate(-50%, 10px);
+      -webkit-border-radius: 6px;
+      -moz-border-radius: 6px;
+      border-radius: 6px; }
+
+@-webkit-keyframes map-marker {
+  0% {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+    filter: alpha(opacity=100); }
+  100% {
+    -webkit-transform: scale(2.5);
+    -moz-transform: scale(2.5);
+    -ms-transform: scale(2.5);
+    -o-transform: scale(2.5);
+    transform: scale(2.5);
+    opacity: 0;
+    filter: alpha(opacity=0); } }
+@-moz-keyframes map-marker {
+  0% {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+    filter: alpha(opacity=100); }
+  100% {
+    -webkit-transform: scale(2.5);
+    -moz-transform: scale(2.5);
+    -ms-transform: scale(2.5);
+    -o-transform: scale(2.5);
+    transform: scale(2.5);
+    opacity: 0;
+    filter: alpha(opacity=0); } }
+@-ms-keyframes map-marker {
+  0% {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+    filter: alpha(opacity=100); }
+  100% {
+    -webkit-transform: scale(2.5);
+    -moz-transform: scale(2.5);
+    -ms-transform: scale(2.5);
+    -o-transform: scale(2.5);
+    transform: scale(2.5);
+    opacity: 0;
+    filter: alpha(opacity=0); } }
+@keyframes map-marker {
+  0% {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+    filter: alpha(opacity=100); }
+  100% {
+    -webkit-transform: scale(2.5);
+    -moz-transform: scale(2.5);
+    -ms-transform: scale(2.5);
+    -o-transform: scale(2.5);
+    transform: scale(2.5);
+    opacity: 0;
+    filter: alpha(opacity=0); } }
 
 
