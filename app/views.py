@@ -1,12 +1,12 @@
 from flask import render_template, flash, redirect, session, url_for, request, g
 from flask.ext.login import login_user, logout_user, current_user, login_required
 from app import app, db, login_manager, oauth
-from .forms import LoginForm, PageForm, PostForm
+from .forms import PageForm, PostForm
 from .models import User, Post, Page
 
 @login_manager.user_loader
 def load_user(id):
-  return User.get(int(id))
+  return User.query.get(int(id))
 
 @app.route('/')
 @app.route('/index')
@@ -51,15 +51,10 @@ def oauth_authorized(resp):
     user = User(social_id=fb_user.data['id'], nickname=fb_user.data['name'], email=fb_user.data['email'])
     db.session.add(user)
     db.session.commit()
-    # flash(u'Access Denied. The user %s does not exist.' % fb_user.data['name'])
-    return redirect(next_url)
+    # TODO: remove new user functionality, switch to: flash(u'Access Denied. The user %s does not exist.' % fb_user.data['name'])
+    return redirect(url_for('index'))
 
-  remember_me = False
-  if 'remember_me' in session:
-    remember_me = session['remember_me']
-    session.pop('remember_me', None)
-
-  login_user(user, remember=remember_me)
+  login_user(user, True) #change this to true when done debugging
 
   flash('You were signed in as %s' % fb_user.data['name'])
   return redirect(next_url)
@@ -73,12 +68,7 @@ def login():
   if g.user is not None and g.user.is_authenticated():
     return redirect(url_for('index'))
 
-  form = LoginForm()
-  if form.validate_on_submit():
-    session['remember_me'] = form.remember_me.data
-    return facebook.authorize(callback=url_for('oauth_authorized', next=request.args.get('next') or request.referrer or None, _external=True))
-
-  return render_template('login.html', title='Sign In', form=form, providers=app.config['OPENID_PROVIDERS'])
+  return facebook.authorize(callback=url_for('oauth_authorized', next=request.args.get('next') or request.referrer or None, _external=True))
 
 @app.before_request
 def before_request():
