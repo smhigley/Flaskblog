@@ -32,6 +32,11 @@
   <link href='http://fonts.googleapis.com/css?family=Fjalla+One|Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
 
   <script src="/static/js/custom.modernizr.js"></script>
+
+  {# Markdown editor javascript, if logged in #}
+  {% if g.user.is_authenticated() %}
+    {{ pagedown.html_head() }}
+  {% endif %}
 </head>
 <body>
   <aside class="sidebar">
@@ -44,7 +49,7 @@
 
     <header class="page-header" role="banner">
       <nav class="main-menu" role="navigation">
-        <a href="/" class="logo">The Long Trip</a>
+        <a href="/" class="logo">{% include 'logo.svg' %}</a>
         <a href="#" class="mobile menu-trigger">Menu</a>
         <ul class="menu">
           <li><a href="/about">About</a></li>

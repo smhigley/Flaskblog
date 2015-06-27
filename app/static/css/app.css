@@ -390,6 +390,10 @@ html {
 *, *:before, *:after {
   box-sizing: inherit; }
 
+@media only screen and (min-width: 48.75em) {
+  .mobile {
+    display: none; } }
+
 .row {
   width: 100%;
   margin: 0 auto;
@@ -433,7 +437,7 @@ html {
 .container {
   width: 100%;
   overflow: hidden;
-  padding: 3.125em 1.875em; }
+  padding: 5em 1.875em; }
   @media only screen and (min-width: 48.75em) {
     .container {
       width: 66.6666%; } }
@@ -462,54 +466,16 @@ body {
   list-style-type: none;
   padding: 0;
   margin: 0; }
+  .menu li {
+    margin: 0; }
 
 .hide-text {
   text-indent: 100%;
   white-space: nowrap;
   overflow: hidden; }
 
-p, ul, ol {
-  margin: 0 0 2em;
-  font-size: 15px;
-  line-height: 1.66667; }
-
-h1 {
-  margin: 0;
-  color: #00a6a6;
-  font-size: 36px;
-  font-weight: normal;
-  line-height: 1.5; }
-
-h2, h3, h4, h5, h6 {
-  margin: 0 0 10px; }
-
-h2 {
-  font-size: 32px;
-  font-weight: bold;
-  line-height: 1.1875; }
-  @media only screen and (min-width: 56.25em) {
-    h2 {
-      font-size: 36px; } }
-
-h3 {
-  font-family: "Fjalla One", sans-serif;
-  font-size: 22px;
-  line-height: 1.27273;
-  font-weight: bold;
-  text-transform: uppercase;
-  color: #00a6a6; }
-  @media only screen and (min-width: 56.25em) {
-    h3 {
-      font-size: 26px; } }
-
-h4 {
-  font-family: "Fjalla One", sans-serif;
-  font-size: 20px;
-  line-height: 1.5;
-  font-weight: normal;
-  font-style: italic; }
-
 a {
+  color: #00a6a6;
   text-decoration: none; }
   a, a:before, a:after {
     -webkit-transition: background 0.25s ease, color 0.25s ease;
@@ -517,14 +483,95 @@ a {
     -ms-transition: background 0.25s ease, color 0.25s ease;
     -o-transition: background 0.25s ease, color 0.25s ease;
     transition: background 0.25s ease, color 0.25s ease; }
-  a:focus {
+  a:hover, a:focus {
+    color: #86c393;
     outline: none; }
+
+h1, h2, h3, h4, h5, h6 {
+  display: block;
+  margin: 0 0 20px;
+  text-align: center; }
+
+h1 {
+  font-family: "Fjalla One", sans-serif;
+  font-size: 32px;
+  font-weight: normal;
+  line-height: 1.25;
+  text-transform: uppercase;
+  text-align: center; }
+  @media only screen and (min-width: 56.25em) {
+    h1 {
+      font-size: 48px;
+      line-height: 1.05; } }
+
+h2 {
+  font-size: 26px;
+  font-weight: bold;
+  line-height: 1.15; }
+  @media only screen and (min-width: 56.25em) {
+    h2 {
+      font-size: 36px;
+      line-height: 1.25; } }
+
+h3 {
+  font-family: "Fjalla One", sans-serif;
+  font-size: 22px;
+  line-height: 1.15;
+  font-weight: normal;
+  text-transform: uppercase; }
+  @media only screen and (min-width: 56.25em) {
+    h3 {
+      font-size: 28px;
+      line-height: 1.25; } }
+
+h4 {
+  font-size: 18px;
+  line-height: 1.2;
+  font-weight: normal;
+  font-style: italic; }
+  @media only screen and (min-width: 56.25em) {
+    h4 {
+      font-size: 24px;
+      line-height: 1.25; } }
+
+h5, h6 {
+  font-size: 18px;
+  font-weight: bold;
+  text-align: left; }
+
+p, ul, ol, pre {
+  margin: 0 0 1.875em;
+  font-size: 16px;
+  line-height: 1.6; }
+
+li {
+  margin-bottom: 0.5em; }
+
+blockquote {
+  padding: 0.44444em 0 0.44444em 1.11111em;
+  border-left: 10px solid #fce4cc;
+  margin: 0 0 1.66667em;
+  font-size: 18px;
+  font-weight: normal;
+  font-style: italic; }
+  blockquote p {
+    font-size: 18px;
+    font-weight: normal;
+    font-style: italic; }
+  blockquote p:last-child {
+    margin: 0; }
 
 img {
   max-width: 100%; }
 
 svg {
   height: 100%; }
+
+pre {
+  padding: 1.875em 1.25em;
+  border: 1px solid #cfd4d7;
+  background-color: #e7ecef;
+  line-height: 1.2; }
 
 .ol-hidden, .ol-collapsed {
   position: absolute;
@@ -659,5 +706,33 @@ svg {
     transform: scale(2.5);
     opacity: 0;
     filter: alpha(opacity=0); } }
+.page-header {
+  margin-bottom: 3.125em; }
+
+.logo {
+  display: block;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto; }
+  .logo img, .logo svg {
+    display: block;
+    width: 100%; }
+
+.main-menu {
+  text-align: center; }
+  .main-menu .menu {
+    padding: 0.75em 0;
+    border-top: 1px solid #e7ecef;
+    border-bottom: 1px solid #e7ecef;
+    margin: 1.5em 0; }
+    .main-menu .menu a {
+      display: block;
+      font-size: 20px;
+      font-weight: bold;
+      color: #00a6a6;
+      text-transform: uppercase; }
+  .main-menu li {
+    display: inline-block;
+    padding: 0 0.625em; }
 
 

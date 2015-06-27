@@ -14,6 +14,12 @@ html {
   box-sizing: inherit;
 }
 
+.mobile {
+  @include bp($bp-layout) {
+    display: none;
+  }
+}
+
 .row {
   @include grid-row();
 }
@@ -39,7 +45,7 @@ html {
 .container {
   width: 100%;
   overflow: hidden;
-  padding: em-calc(50) em-calc(30);
+  padding: em-calc(80) em-calc(30);
   @include bp($bp-layout) {
     width: 66.6666%;
   }

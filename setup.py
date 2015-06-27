@@ -16,6 +16,7 @@ setup(
     'Flask-SQLAlchemy==2.0',
     'sqlalchemy-migrate==0.9.2',
     'Flask-WTF==0.10.3',
+    'Flask-PageDown==0.2.1',
     'Flask-WhooshAlchemy==0.56',
     'Flask-Babel==0.9',
     'guess-language==0.2',

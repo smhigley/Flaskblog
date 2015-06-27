@@ -1,0 +1,38 @@
+.page-header {
+  margin-bottom: em-calc(50);
+}
+
+.logo {
+  display: block;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  img, svg {
+    display: block;
+    width: 100%;
+  }
+}
+
+.main-menu {
+  text-align: center;
+
+  .menu {
+    padding: em-calc(12) 0;
+    border-top: 1px solid $grey;
+    border-bottom: 1px solid $grey;
+    margin: em-calc(24) 0;
+
+    a {
+      display: block;
+      font-size: 20px;
+      font-weight: bold;
+      color: $blue;
+      text-transform: uppercase;
+    }
+  }
+
+  li {
+    display: inline-block;
+    padding: 0 em-calc(10);
+  }
+}
