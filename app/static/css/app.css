@@ -567,8 +567,16 @@ img {
 svg {
   height: 100%; }
 
+code {
+  display: inline-block;
+  padding: 2px 5px;
+  background-color: #e7ecef;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px; }
+
 pre {
-  padding: 1.875em 1.25em;
+  padding: 1.25em;
   border: 1px solid #cfd4d7;
   background-color: #e7ecef;
   line-height: 1.2; }

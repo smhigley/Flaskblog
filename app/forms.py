@@ -11,5 +11,5 @@ class PageForm(Form):
 class PostForm(Form):
   title = StringField('title', validators=[DataRequired()])
   slug = StringField('slug', validators=[DataRequired()]) # TODO: add better validation to this: no spaces, capitals, special chars
-  body = StringField('body', validators=[DataRequired()])
+  body = PageDownField('body', validators=[DataRequired()])
   image = StringField('image')

@@ -2,7 +2,11 @@
 
 {% block content %}
   <p>Hi, {{user.nickname}}</p>
-  {% for post in posts %}
+
+  {% for post in posts.items %}
   <div><p>{{ post.author.nickname }} says: <em>{{ post.body }}</em></p></div>
   {% endfor %}
+
+  <p><a href="{{ url_for('log') }}" class="button blog-link">View all posts</a></p>
+
 {% endblock %}

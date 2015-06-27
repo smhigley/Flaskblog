@@ -131,8 +131,14 @@ svg {
   height: 100%;
 }
 
+code {
+  display: inline-block;
+  padding: 2px 5px;
+  background-color: $grey;
+  @include border-radius(4px);
+}
 pre {
-  padding: em-calc(30) em-calc(20);
+  padding: em-calc(20);
   border: 1px solid darken($grey, 10%);
   background-color: $grey;
   line-height: 1.2;

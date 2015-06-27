@@ -19,3 +19,6 @@ location = {
   'longitude': '77.209021',
   'placename': 'Delhi'
 }
+
+# Pagination
+POSTS_PER_PAGE = 2
