@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>{{ action }} Post</h1>
+  <form action="" method="post" name="post-form">
+      {{ form.hidden_tag() }}
+
+      <label>Post Title</label>
+      {{ form.title(size=80, maxlength=64) }}
+      {% for error in form.title.errors %}
+        <div class="error">[{{ error }}]</div>
+      {% endfor %}
+
+      <label>Slug (must contain only letters, numbers, and dashes)</label>
+      {{ form.slug(size=80, maxlength=32) }}
+      {% for error in form.slug.errors %}
+        <div class="error">[{{ error }}]</div>
+      {% endfor %}
+
+      <label>Post Content</label>
+      {{ form.body(size=80, maxlength=140) }}
+      {% for error in form.body.errors %}
+        <div class="error">[{{ error }}]</div>
+      {% endfor %}
+
+      <label>Featured image (resource slug)</label>
+      {{ form.image(size=80, maxlength=32) }}
+      {% for error in form.image.errors %}
+        <div class="error">[{{ error }}]</div>
+      {% endfor %}
+
+      <button type="submit">{{ action }} Post</button>
+  </form>
+{% endblock %}

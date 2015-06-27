@@ -1,15 +1,19 @@
 from flask.ext.wtf import Form
-from wtforms import StringField
-from wtforms.validators import DataRequired
+from wtforms import StringField, TextAreaField, validators
 from flask.ext.pagedown.fields import PageDownField
 
 class PageForm(Form):
-  title = StringField('title', validators=[DataRequired()])
-  slug = StringField('slug', validators=[DataRequired()]) # TODO: add better validation to this: no spaces, capitals, special chars
-  body = PageDownField('body', validators=[DataRequired()])
+  title = StringField('title', validators=[validators.DataRequired()])
+  slug = StringField('slug', validators=[validators.DataRequired(), validators.Regexp('[\w-]+$', message="The slug must contain only letters, numbers, and dashes")])
+  body = PageDownField('body', validators=[validators.DataRequired()])
 
 class PostForm(Form):
-  title = StringField('title', validators=[DataRequired()])
-  slug = StringField('slug', validators=[DataRequired()]) # TODO: add better validation to this: no spaces, capitals, special chars
-  body = PageDownField('body', validators=[DataRequired()])
+  title = StringField('title', validators=[validators.DataRequired()])
+  slug = StringField('slug', validators=[validators.DataRequired(), validators.Regexp('[\w-]+$', message="The slug must contain only letters, numbers, and dashes")])
+  body = PageDownField('body', validators=[validators.DataRequired()])
   image = StringField('image')
+
+class ContactForm(Form):
+  name = StringField('name', validators=[validators.DataRequired()])
+  email = StringField('email', validators=[validators.DataRequired(), validators.Email()])
+  message = TextAreaField('message', validators=[validators.DataRequired()])

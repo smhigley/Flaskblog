@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>{{ action }} Page</h1>
+  <form action="" method="post" name="login">
+      {{ form.hidden_tag() }}
+
+      <label>Page Title</label>
+      {{ form.title(size=80, maxlength=64) }}
+      {% for error in form.title.errors %}
+        <div class="error">[{{ error }}]</div>
+      {% endfor %}
+
+      <label>Slug (must contain only letters, numbers, and dashes)</label>
+      {{ form.slug(size=80, maxlength=32) }}
+      {% for error in form.slug.errors %}
+        <div class="error">[{{ error }}]</div>
+      {% endfor %}
+
+      <label>Body</label>
+      {{ form.body(size=80, maxlength=140) }}
+      {% for error in form.body.errors %}
+        <div class="error">[{{ error }}]</div>
+      {% endfor %}
+
+      <button type="submit">{{ action }} Page</button>
+  </form>
+{% endblock %}

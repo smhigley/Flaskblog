@@ -2,7 +2,7 @@ from flask import render_template, flash, redirect, session, url_for, request, g
 from flask.ext.login import login_user, logout_user, current_user, login_required
 from datetime import datetime
 from app import app, db, login_manager, oauth
-from .forms import PageForm, PostForm
+from .forms import PageForm, PostForm, ContactForm
 from .models import User, Post, Page
 from config import POSTS_PER_PAGE
 
@@ -73,9 +73,20 @@ def login():
 def before_request():
   g.user = current_user
 
-# Pages
+# Contact Page
+@app.route('/contact', methods=['GET', 'POST'])
+def contact():
+  form = ContactForm()
+
+  if form.validate_on_submit():
+    flash('Thank you for your message. We\'ll get in touch as soon as we can, but please be patient -- we may not have access to the internet for a while.')
+    return redirect(url_for('contact'));
+
+  return render_template('contact.html', title='Contact Us', form=form)
+
+# Generic Pages
 @app.route('/<slug>')
-def view_page(slug):
+def page(slug):
   page = Page.query.filter_by(slug=slug).first()
   if page is None:
     flash('The URL "%s" was not found' % slug)
@@ -92,13 +103,29 @@ def add_page():
     page = Page(title=form.title.data, slug=form.slug.data, body=form.body.data)
     db.session.add(page)
     db.session.commit()
-    return render_template('page.html', page=page) # TODO: make this a redirect() to avoid reload resubmissions
+    return redirect(url_for('page', slug=form.slug.data))
 
-  return render_template('new_page.html', form=form)
+  return render_template('page_add_edit.html', form=form, action='Create')
+
+@app.route('/<slug>/edit', methods=['GET', 'POST'])
+@login_required
+def edit_page(slug):
+  page = Page.query.filter_by(slug=slug).first()
+  form = PageForm(obj=page)
+
+  if form.validate_on_submit():
+    flash('Page updated')
+    page.title = form.title.data
+    page.slug = form.slug.data
+    page.body = form.body.data
+    db.session.commit()
+    return redirect(url_for('page', slug=form.slug.data))
+
+  return render_template('page_add_edit.html', form=form, action='Edit')
 
 # Posts
 @app.route('/log/<slug>')
-def view_post(slug):
+def post(slug):
   post = Post.query.filter_by(slug=slug).first()
   if post is None:
     flash('The URL %s was not found' % slug)
@@ -118,8 +145,25 @@ def add_post():
     post = Post(title=form.title.data, slug=form.slug.data, body=form.body.data, image=form.image.data, timestamp=datetime.utcnow(), author=g.user)
     db.session.add(post)
     db.session.commit()
-    return render_template('post.html', post=post) # TODO: make this a redirect()
+    return redirect(url_for('post', slug=form.slug.data))
 
-  return render_template('new_post.html', form=form)
+  return render_template('post_add_edit.html', form=form)
+
+@app.route('/log/<slug>/edit', methods=['GET', 'POST'])
+@login_required
+def edit_post(slug):
+  post = Post.query.filter_by(slug=slug).first()
+  form = PostForm(obj=post)
+
+  if form.validate_on_submit():
+    flash('Page updated')
+    post.title = form.title.data
+    post.slug = form.slug.data
+    post.body = form.body.data
+    post.image = form.image.data
+    db.session.commit()
+    return redirect(url_for('post', slug=form.slug.data))
+
+  return render_template('post_add_edit.html', form=form, action='Edit')
 
 
