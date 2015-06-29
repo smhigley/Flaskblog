@@ -41,9 +41,7 @@
 </head>
 <body>
   <aside class="sidebar">
-    <div id="map" data-lat="{{ config.LOCATION.latitude }}" data-long="{{ config.LOCATION.longitude }}">
-      <div class="location-marker"><span>{{ config.LOCATION.placename }}</span></div>
-    </div>
+    {% block sidebar %}{% endblock %}
   </aside><!-- /.sidebar -->
 
   <div class="container">

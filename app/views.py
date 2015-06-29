@@ -14,7 +14,7 @@ def load_user(id):
 @app.route('/index')
 def index(page=1):
   user = g.user
-  posts = Post.query.paginate(1, 4, False)
+  posts = Post.query.order_by(Post.timestamp.desc()).paginate(1, 4, False)
   return render_template('index.html', title='Home', user=user, posts=posts)
 
 @app.route('/log')

@@ -14,11 +14,14 @@
   }
 
   // map
-  var map_el = document.getElementById('map'),
-      latitude = parseFloat(map_el.getAttribute('data-lat')),
-      longitude = parseFloat(map_el.getAttribute('data-long'));
+  var map_el = document.getElementById('map');
 
-  if (typeof(ol) && map_el.length > 0 && false) {
+  console.log(typeof(ol));
+
+  if (typeof(ol) !== null && map_el) {
+    var latitude = parseFloat(map_el.getAttribute('data-lat')),
+        longitude = parseFloat(map_el.getAttribute('data-long'));
+
     var map = new ol.Map({
       target: 'map',
       controls: [],

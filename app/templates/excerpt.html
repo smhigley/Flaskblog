@@ -1,8 +1,11 @@
 <article class="excerpt">
-  <h3><a href="{{ post.slug }}">{{ post.title }}</a></h3>
+  <h3><a href="{{ url_for('post', slug=post.slug) }}">{{ post.title }}</a></h3>
+  {% if post.image: %}
+    <img src="{{ post.get_thumbnail() }}" class="featured-thumb" alt="Featured Image">
+  {% endif %}
   <div class="meta">
     <span class="author">{{ post.author.nickname }}</span>
     <span class="date">{{ post.timestamp }}</span>
   </div>
-  {{ post.body|striptags|truncate(100) }}
+  {{ post.body|striptags|truncate(300) }}
 </article>

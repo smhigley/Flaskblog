@@ -4,9 +4,13 @@
   <p>Hi, {{user.nickname}}</p>
 
   {% for post in posts.items %}
-  <div><p>{{ post.author.nickname }} says: <em>{{ post.body }}</em></p></div>
+    {% include 'excerpt.html' %}
   {% endfor %}
 
-  <p><a href="{{ url_for('log') }}" class="button blog-link">View all posts</a></p>
+  <p class="center"><a href="{{ url_for('log') }}" class="button blog-link">View all posts</a></p>
 
+{% endblock %}
+
+{% block sidebar %}
+  {% include 'map.html' %}
 {% endblock %}

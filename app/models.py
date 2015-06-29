@@ -37,6 +37,9 @@ class Post(db.Model):
   def __repr__(self):
     return '<Post %r>' % (self.title)
 
+  def get_thumbnail(self):
+    return self.image
+
 
 class Page(db.Model):
   id = db.Column(db.Integer, primary_key=True)

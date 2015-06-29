@@ -26,7 +26,6 @@
       display: block;
       font-size: 20px;
       font-weight: bold;
-      color: $blue;
       text-transform: uppercase;
     }
   }
@@ -34,6 +33,20 @@
   li {
     display: inline-block;
     padding: 0 em-calc(10);
+  }
+}
+
+// sidebar
+.sidebar {
+  .featured-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
   }
 }
 
@@ -68,7 +81,7 @@ input[type=text], input[type=email], input[type=search], input[type=tel], input[
   }
 }
 
-button[type=submit] {
+.button, button[type=submit] {
   position: relative;
   display: inline-block;
   padding: em-calc(10) em-calc(40);
@@ -88,16 +101,23 @@ button[type=submit] {
     right: -6px;
     bottom: -6px;
     border: 4px solid $blue;
-    @include transform(scale(1, 1));
+    @include transform(scale(0.8, 0.7));
     @include opacity(1);
     @include transition(all 0.4s ease);
   }
 
-  &:hover, &:focus {
-    &:before {
-      @include transform(scale(1.15, 1.24));
-      @include opacity(0);
-    }
+  &:hover {
+    color: #fff;
+  }
+
+  &:hover:before {
+    @include transform(scale(1, 1));
+    @include opacity(1);
+  }
+
+  &:focus:before {
+    @include transform(scale(1.15, 1.24));
+    @include opacity(0);
   }
 }
 
@@ -107,6 +127,105 @@ button[type=submit] {
   color: $warning;
   font-size: 0.95em;
   font-style: italic;
+}
+
+// post excerpt
+.excerpt {
+  position: relative;
+  min-height: 200px;
+  padding-left: 230px;
+  padding-bottom: em-calc(40);
+  border-bottom: 1px solid $grey;
+  margin-bottom: em-calc(40);
+
+  h3 {
+    text-align: left;
+    margin: 0;
+    a {
+      color: $dark;
+      &:hover, &:focus {
+        color: $green;
+      }
+    }
+  }
+
+  .featured-thumb {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: auto;
+  }
+
+  .meta {
+    margin: 0 0 em-calc(20);
+    @include clearfix;
+    color: darken($grey, 30%);
+    font-style: italic;
+  }
+
+  .author {
+    float: left;
+  }
+  .date {
+    float: right;
+  }
+}
+
+// pagination
+.pagination {
+  margin-top: em-calc(-20);
+  text-align: center;
+
+  li {
+    display: inline-block;
+    margin: 0 em-calc(2);
+    vertical-align: middle;
+  }
+
+  a {
+    display: block;
+    padding: em-calc(2) em-calc(8);
+    border: 1px solid darken($grey, 10%);
+    background-color: $grey;
+    color: $dark;
+    @include border-radius(5px);
+    @include transition(all 0.3s ease);
+
+    &:hover, &:focus {
+      background-color: $blue;
+      border-color: $blue;
+      color: #fff;
+      &:before {
+        color: #fff;
+      }
+    }
+  }
+
+  span {
+    display: block;
+    padding: em-calc(6);
+    font-weight: bold;
+  }
+
+  .next, .prev {
+    font-size: 0;
+    line-height: 0;
+    padding: 2px 0;
+    &:before {
+      @extend .icon;
+      font-size: 25px;
+      line-height: 25px;
+      color: $dark;
+    }
+  }
+
+  .prev:before {
+    content: "\e207";
+  }
+  .next:before {
+    content: "\e208";
+  }
 }
 
 // flash messages
