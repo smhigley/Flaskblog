@@ -4,23 +4,30 @@
   <h1>Contact Us</h1>
   <form action="" method="post" name="contact" class="contact-form">
     {{ form.hidden_tag() }}
-    <label>Your name</label>
-    {{ form.name(size=80, maxlength=64) }}
-    {% for error in form.name.errors %}
-      <div class="error">[{{ error }}]</div>
-    {% endfor %}
 
-    <label>Email</label>
-    {{ form.email(size=80, maxlength=64) }}
-    {% for error in form.email.errors %}
-      <div class="error">[{{ error }}]</div>
-    {% endfor %}
+    <div class="input-group {% if form.name.errors %}error{% endif %}">
+      <label>Your Name</label>
+      {{ form.name() }}
+      {% for error in form.name.errors %}
+        <div class="error-msg">{{ error }}</div>
+      {% endfor %}
+    </div>
 
-    <label>Message</label>
-    {{ form.message(size=80, maxlength=140) }}
-    {% for error in form.message.errors %}
-      <div class="error">[{{ error }}]</div>
-    {% endfor %}
+    <div class="input-group {% if form.email.errors %}error{% endif %}">
+      <label>Email</label>
+      {{ form.email() }}
+      {% for error in form.email.errors %}
+        <div class="error-msg">{{ error }}</div>
+      {% endfor %}
+    </div>
+
+    <div class="input-group {% if form.message.errors %}error{% endif %}">
+      <label>Message</label>
+      {{ form.message(rows=8, cols=20) }}
+      {% for error in form.message.errors %}
+        <div class="error-msg">{{ error }}</div>
+      {% endfor %}
+    </div>
 
     <button type="submit">Submit</button>
   </form>

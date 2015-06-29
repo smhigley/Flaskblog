@@ -147,7 +147,7 @@ def add_post():
     db.session.commit()
     return redirect(url_for('post', slug=form.slug.data))
 
-  return render_template('post_add_edit.html', form=form)
+  return render_template('post_add_edit.html', form=form, action='Create')
 
 @app.route('/log/<slug>/edit', methods=['GET', 'POST'])
 @login_required
@@ -165,5 +165,20 @@ def edit_post(slug):
     return redirect(url_for('post', slug=form.slug.data))
 
   return render_template('post_add_edit.html', form=form, action='Edit')
+
+@app.route('/log/<slug>/delete')
+@login_required
+def delete_post(slug):
+  post = Post.query.filter_by(slug=slug).first()
+  title = post.title
+  if post is None:
+    flash('Post not found.')
+    return redirect(url_for('log'))
+
+  db.session.delete(post)
+  db.session.commit()
+  flash('"%s" has been deleted' % title)
+  return redirect(url_for('log'))
+
 
 

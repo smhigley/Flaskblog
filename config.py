@@ -22,3 +22,12 @@ location = {
 
 # Pagination
 POSTS_PER_PAGE = 2
+
+# Timezone
+
+# Email
+MAIL_SERVER = 'localhost'
+MAIL_PORT = 25
+MAIL_USERNAME = None
+MAIL_PASSWORD = None
+ADMIN_EMAILS = ['sarah@thelongtrip.org', 'david@thelongtrip.org']

@@ -36,3 +36,75 @@
     padding: 0 em-calc(10);
   }
 }
+
+// forms
+.input-group {
+  margin: 0 0 em-calc(30);
+  @include clearfix;
+
+  &.error {
+    input, textarea {
+      border-color: $warning;
+    }
+  }
+}
+
+label {
+  display: block;
+  margin: 0 0 em-calc(10);
+  font-weight: bold;
+}
+
+input[type=text], input[type=email], input[type=search], input[type=tel], input[type=url], input[type=number], textarea {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  padding: em-calc(10) em-calc(14);
+  border: 3px solid $grey;
+  @include transition(border 0.3s ease);
+  &:focus {
+    outline: none;
+    border-color: $blue;
+  }
+}
+
+button[type=submit] {
+  position: relative;
+  display: inline-block;
+  padding: em-calc(10) em-calc(40);
+  margin: 6px;
+  border: 0;
+  outline: none;
+  background: $blue;
+  color: #fff;
+  font-family: $heading-font;
+  text-transform: uppercase;
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: -6px;
+    left: -6px;
+    right: -6px;
+    bottom: -6px;
+    border: 4px solid $blue;
+    @include transform(scale(1, 1));
+    @include opacity(1);
+    @include transition(all 0.4s ease);
+  }
+
+  &:hover, &:focus {
+    &:before {
+      @include transform(scale(1.15, 1.24));
+      @include opacity(0);
+    }
+  }
+}
+
+.error-msg {
+  display: block;
+  margin-top: 6px;
+  color: $warning;
+  font-size: 0.95em;
+  font-style: italic;
+}

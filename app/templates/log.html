@@ -3,7 +3,7 @@
 {% block content %}
 
   {% for post in posts.items %}
-  <div><p>{{ post.author.nickname }} says: <em>{{ post.body }}</em></p></div>
+    {% include 'excerpt.html' %}
   {% endfor %}
 
   {% if posts.has_prev or posts.has_next %}
