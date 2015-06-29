@@ -2,8 +2,8 @@
 
 {% block content %}
   <h1>{{ post.title }}</h1>
-  {{ post.body }}
+  {{ post.body|safe }}
   {% if post.image: %}
-    <img src="{{post.image}}" alt="Featured Image">
+    <!-- <img src="{{post.image}}" alt="Featured Image"> -->
   {% endif %}
 {% endblock %}

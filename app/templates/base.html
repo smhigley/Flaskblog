@@ -33,10 +33,11 @@
 
   <script src="/static/js/modernizr.custom.js"></script>
 
-  {# Markdown editor javascript, if logged in #}
+  {# Markdown editor javascript, if logged in
   {% if g.user.is_authenticated() %}
     {{ pagedown.html_head() }}
   {% endif %}
+  #}
 </head>
 <body>
   <aside class="sidebar">

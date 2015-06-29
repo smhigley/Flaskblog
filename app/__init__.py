@@ -2,7 +2,7 @@ import os
 from flask import Flask
 from flask.ext.sqlalchemy import SQLAlchemy
 from flask.ext.login import LoginManager
-from flask.ext.pagedown import PageDown
+# from flask.ext.pagedown import PageDown
 from flask_oauth import OAuth
 from flask.ext.mail import Mail
 from config import basedir, location
@@ -14,8 +14,8 @@ app.config.from_object('config')
 # database with sqlalchemy
 db = SQLAlchemy(app)
 
-#markdown editor
-pagedown = PageDown(app)
+# TODO: get flask-markdown and make markdown editor work w/ image gallery html
+# pagedown = PageDown(app)
 
 # login manager and social oauth logins
 login_manager = LoginManager()

@@ -6,3 +6,5 @@ app/static/components/
 app/static/.sass-cache/
 *.pyc
 flask/
+icomoon/
+uploads/
