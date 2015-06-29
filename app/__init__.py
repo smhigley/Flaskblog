@@ -27,6 +27,6 @@ oauth = OAuth()
 app.config['LOCATION'] = location;
 
 # init email
-mail = Mail(app)
+# mail = Mail(app)
 
 from app import views, models

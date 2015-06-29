@@ -820,4 +820,18 @@ button[type=submit] {
   font-size: 0.95em;
   font-style: italic; }
 
+.alerts {
+  margin: 0 0 1.875em; }
+  .alerts li {
+    display: block;
+    padding: 0.625em 1.25em;
+    background-color: #c2e1c9;
+    border: 1px solid #86c393;
+    color: #6b9c75;
+    font-weight: bold;
+    text-align: center;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px; }
+
 

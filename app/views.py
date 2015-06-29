@@ -20,7 +20,7 @@ def index(page=1):
 @app.route('/log')
 @app.route('/log/<int:page>')
 def log(page=1):
-  posts = Post.query.paginate(page, POSTS_PER_PAGE, True)
+  posts = Post.query.order_by(Post.timestamp.desc()).paginate(page, POSTS_PER_PAGE, True)
   return render_template('log.html', title='Trip Log', posts=posts)
 
 # Login page

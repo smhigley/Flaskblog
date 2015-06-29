@@ -108,3 +108,19 @@ button[type=submit] {
   font-size: 0.95em;
   font-style: italic;
 }
+
+// flash messages
+.alerts {
+  margin: 0 0 em-calc(30);
+
+  li {
+    display: block;
+    padding: em-calc(10) em-calc(20);
+    background-color: lighten($green, 50%);
+    border: 1px solid $green;
+    color: darken($green, 20%);
+    font-weight: bold;
+    text-align: center;
+    @include border-radius(6px);
+  }
+}
