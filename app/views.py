@@ -83,6 +83,12 @@ def contact():
 
   return render_template('contact.html', title='Contact Us', form=form)
 
+# Admin instructions page
+@app.route('/instructions')
+@login_required
+def admin_help():
+  return render_template('admin-help.html', title='Admin Instructions')
+
 # Generic Pages
 @app.route('/<slug>')
 def page(slug):

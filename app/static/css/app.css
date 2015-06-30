@@ -900,25 +900,32 @@ input[type=text], input[type=email], input[type=search], input[type=tel], input[
   font-style: italic; }
 
 .excerpt {
-  position: relative;
-  min-height: 240px;
-  padding-left: 230px;
   padding-bottom: 2.5em;
   border-bottom: 1px solid #e7ecef;
   margin-bottom: 2.5em; }
-  .excerpt h3 {
-    text-align: left;
-    margin: 0; }
-    .excerpt h3 a {
-      color: #2a3539; }
-      .excerpt h3 a:hover, .excerpt h3 a:focus {
-        color: #86c393; }
+  @media only screen and (min-width: 36.25em) {
+    .excerpt {
+      position: relative;
+      min-height: 240px;
+      padding-left: 230px; } }
+  @media only screen and (min-width: 36.25em) {
+    .excerpt h3 {
+      margin: 0;
+      text-align: left; } }
+  .excerpt h3 a {
+    color: #2a3539; }
+    .excerpt h3 a:hover, .excerpt h3 a:focus {
+      color: #86c393; }
   .excerpt .featured-thumb {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 200px;
-    height: auto; }
+    display: block;
+    margin: 0 auto 0.875em; }
+    @media only screen and (min-width: 36.25em) {
+      .excerpt .featured-thumb {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 200px;
+        height: auto; } }
   .excerpt p {
     margin-bottom: 0.75em; }
 

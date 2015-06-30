@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Admin Instructions</h1>
+  <h4>Admin Bar</h4>
+  <p>Self explanatory, but be careful of the delete button. There is no recovery or confirmation (for now).</p>
+  <h4>Page or Post body text</h4>
+  <p>Post and page text accepts HTML markup, and doesn't alter in any way what you input. At some point, this might be replaced with a markdown editor, but for now create your own tags.</p>
+  <h4>Images</h4>
+  <p>The featured image is used both in the right sidebar (top on mobile), and as the thumb on the loop page. When uploaded, it also needs a thumbnail with _thumb appended to the same filename. For example, /static/uploads/india/featured.jpg and /static/uploads/india/featured_thumb.jpg. The thumbnail should be 200px by 200px, and the featured image should be at least 800px in height, and 800px in width. It should be able to work at just about any aspect ratio. Images used in the image gallery should also be uploaded with a thumbnail of the same size and naming schema.</p>
+  <p>Images should be uploaded to the /static/uploads folder, then organized by country and region.</p>
+  <h4>Image Gallery markup</h4>
+  <p><pre><code>&lt;div class="image-gallery" data-images="/path/to/image1.jpg, /path/to/image2.jpg, etc"&gt;<br>&lt;/div&gt;</pre></code></p>
+{% endblock %}
+
+{% block sidebar %}
+  {% include '_map.html' %}
+{% endblock %}
+
+{% block adminbar %}
+  {% include '_adminbar.html' %}
+{% endblock %}

@@ -175,16 +175,22 @@ input[type=text], input[type=email], input[type=search], input[type=tel], input[
 
 // post excerpt
 .excerpt {
-  position: relative;
-  min-height: 240px;
-  padding-left: 230px;
+  $bp-excerpt: 580;
   padding-bottom: em-calc(40);
   border-bottom: 1px solid $grey;
   margin-bottom: em-calc(40);
 
+  @include bp($bp-excerpt) {
+    position: relative;
+    min-height: 240px;
+    padding-left: 230px;
+  }
+
   h3 {
-    text-align: left;
-    margin: 0;
+    @include bp($bp-excerpt) {
+      margin: 0;
+      text-align: left;
+    }
     a {
       color: $dark;
       &:hover, &:focus {
@@ -194,11 +200,15 @@ input[type=text], input[type=email], input[type=search], input[type=tel], input[
   }
 
   .featured-thumb {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 200px;
-    height: auto;
+    display: block;
+    margin: 0 auto em-calc(14);
+    @include bp($bp-excerpt) {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 200px;
+      height: auto;
+    }
   }
 
   p {
