@@ -32,7 +32,7 @@
 
   li {
     display: inline-block;
-    padding: 0 em-calc(10);
+    padding: 0 em-calc(18);
   }
 }
 
@@ -184,6 +184,10 @@ input[type=text], input[type=email], input[type=search], input[type=tel], input[
     position: relative;
     min-height: 240px;
     padding-left: 230px;
+
+    .meta {
+      text-align: left;
+    }
   }
 
   h3 {
@@ -218,15 +222,15 @@ input[type=text], input[type=email], input[type=search], input[type=tel], input[
 
 .meta {
   margin: 0 0 em-calc(20);
-  @include clearfix;
   color: darken($grey, 30%);
   font-style: italic;
+  text-align: center;
 
   .author {
-    float: left;
+    padding-right: em-calc(6);
   }
   .date {
-    float: right;
+    padding-left: em-calc(6);
   }
 }
 

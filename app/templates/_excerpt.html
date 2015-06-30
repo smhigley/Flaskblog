@@ -4,7 +4,7 @@
     <img src="{{ post.get_thumbnail() }}" class="featured-thumb" alt="Featured Image">
   {% endif %}
   <div class="meta">
-    <span class="author">{{ post.author.nickname }}</span>
+    <span class="author">{{ post.author.nickname }}</span> &bull;
     <span class="date">{{ post.timestamp.strftime('%B %-d, %Y') }}</span>
   </div>
   <p>{{ post.body|striptags|truncate(300) }}</p>

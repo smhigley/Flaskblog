@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
+  <h2>Adventure is out there!</h2>
+  <p>At least, we hope so. Either way, we'll do our best to find it and share it with you. Below you'll find our thoughts, photos, adventures, misadventures, and, (overwhelmingly requested) pictures of food.</p> 
+  <p>Explore, enjoy, share, and let us know what you like!</p>
+
   {% for post in posts.items %}
     {% include '_excerpt.html' %}
   {% endfor %}

@@ -3,7 +3,7 @@
 {% block content %}
   <h1>{{ post.title }}</h1>
   <div class="meta">
-    <span class="author">{{ post.author.nickname }}</span>
+    <span class="author">{{ post.author.nickname }}</span> &bull;
     <span class="date">{{ post.timestamp.strftime('%B %-d, %Y') }}</span>
   </div>
   {{ post.body|safe }}

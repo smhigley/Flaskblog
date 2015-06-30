@@ -442,6 +442,9 @@ html {
   @media only screen and (min-width: 48.75em) {
     .container {
       width: 66.6666%; } }
+  @media only screen and (min-width: 81.25em) {
+    .container {
+      width: 860px; } }
 
 .sidebar {
   position: relative;
@@ -455,6 +458,10 @@ html {
       top: 0;
       bottom: 0;
       width: 33.3333%; } }
+  @media only screen and (min-width: 81.25em) {
+    .sidebar {
+      width: auto;
+      left: 860px; } }
 
 @font-face {
   font-family: 'icomoon';
@@ -771,7 +778,7 @@ pre {
       text-transform: uppercase; }
   .main-menu li {
     display: inline-block;
-    padding: 0 0.625em; }
+    padding: 0 1.125em; }
 
 .admin-bar {
   margin: -1.25em 0 3.125em;
@@ -907,7 +914,9 @@ input[type=text], input[type=email], input[type=search], input[type=tel], input[
     .excerpt {
       position: relative;
       min-height: 240px;
-      padding-left: 230px; } }
+      padding-left: 230px; }
+      .excerpt .meta {
+        text-align: left; } }
   @media only screen and (min-width: 36.25em) {
     .excerpt h3 {
       margin: 0;
@@ -932,16 +941,12 @@ input[type=text], input[type=email], input[type=search], input[type=tel], input[
 .meta {
   margin: 0 0 1.25em;
   color: #a1a5a7;
-  font-style: italic; }
-  .meta:before, .meta:after {
-    content: " ";
-    display: table; }
-  .meta:after {
-    clear: both; }
+  font-style: italic;
+  text-align: center; }
   .meta .author {
-    float: left; }
+    padding-right: 0.375em; }
   .meta .date {
-    float: right; }
+    padding-left: 0.375em; }
 
 .pagination {
   margin-top: -1.25em;

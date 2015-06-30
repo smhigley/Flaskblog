@@ -30,7 +30,7 @@
     </div>
 
     <div class="input-group {% if form.image.errors %}error{% endif %}">
-      <label>Featured image (resource slug)</label>
+      <label>Featured image (resource path)</label>
       {{ form.image() }}
       {% for error in form.image.errors %}
         <div class="error-msg">{{ error }}</div>

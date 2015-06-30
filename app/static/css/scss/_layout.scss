@@ -49,6 +49,9 @@ html {
   @include bp($bp-layout) {
     width: 66.6666%;
   }
+  @include bp(1300) {
+    width: 860px;
+  }
 }
 
 .sidebar {
@@ -62,6 +65,10 @@ html {
     top: 0;
     bottom: 0;
     width: 33.3333%;
+  }
+  @include bp(1300) {
+    width: auto;
+    left: 860px;
   }
 }
 
