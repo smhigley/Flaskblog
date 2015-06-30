@@ -13,9 +13,8 @@ def load_user(id):
 @app.route('/')
 @app.route('/index')
 def index(page=1):
-  user = g.user
   posts = Post.query.order_by(Post.timestamp.desc()).paginate(1, 4, False)
-  return render_template('index.html', title='Home', user=user, posts=posts)
+  return render_template('index.html', title='Home', posts=posts)
 
 @app.route('/log')
 @app.route('/log/<int:page>')
@@ -142,7 +141,7 @@ def add_post():
 
   if form.validate_on_submit():
     flash('Post created: %s' % form.title.data)
-    post = Post(title=form.title.data, slug=form.slug.data, body=form.body.data, image=form.image.data, timestamp=datetime.utcnow(), author=g.user)
+    post = Post(title=form.title.data, slug=form.slug.data, body=form.body.data, image=form.image.data, timestamp=datetime.now(), author=g.user)
     db.session.add(post)
     db.session.commit()
     return redirect(url_for('post', slug=form.slug.data))

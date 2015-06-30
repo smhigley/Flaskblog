@@ -601,6 +601,15 @@ pre {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
+.button-simple {
+  display: inline-block;
+  padding: 0.25em 1.5em;
+  border: 1px solid #cfd4d7;
+  background-color: #e7ecef;
+  color: #2a3539; }
+  .button-simple:hover, .button-simple:focus {
+    background-color: #86c393; }
+
 .ol-hidden, .ol-collapsed {
   position: absolute;
   z-index: -1;
@@ -861,7 +870,7 @@ input[type=text], input[type=email], input[type=search], input[type=tel], input[
 
 .excerpt {
   position: relative;
-  min-height: 200px;
+  min-height: 240px;
   padding-left: 230px;
   padding-bottom: 2.5em;
   border-bottom: 1px solid #e7ecef;
@@ -879,18 +888,19 @@ input[type=text], input[type=email], input[type=search], input[type=tel], input[
     left: 0;
     width: 200px;
     height: auto; }
-  .excerpt .meta {
-    margin: 0 0 1.25em;
-    color: #a1a5a7;
-    font-style: italic; }
-    .excerpt .meta:before, .excerpt .meta:after {
-      content: " ";
-      display: table; }
-    .excerpt .meta:after {
-      clear: both; }
-  .excerpt .author {
+
+.meta {
+  margin: 0 0 1.25em;
+  color: #a1a5a7;
+  font-style: italic; }
+  .meta:before, .meta:after {
+    content: " ";
+    display: table; }
+  .meta:after {
+    clear: both; }
+  .meta .author {
     float: left; }
-  .excerpt .date {
+  .meta .date {
     float: right; }
 
 .pagination {
@@ -915,8 +925,8 @@ input[type=text], input[type=email], input[type=search], input[type=tel], input[
     -o-transition: all 0.3s ease;
     transition: all 0.3s ease; }
     .pagination a:hover, .pagination a:focus {
-      background-color: #00a6a6;
-      border-color: #00a6a6;
+      background-color: #86c393;
+      border-color: #86c393;
       color: #fff; }
       .pagination a:hover:before, .pagination a:focus:before {
         color: #fff; }

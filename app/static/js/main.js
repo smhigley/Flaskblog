@@ -16,9 +16,7 @@
   // map
   var map_el = document.getElementById('map');
 
-  console.log(typeof(ol));
-
-  if (typeof(ol) !== null && map_el) {
+  if (typeof(ol) !== undefined && map_el) {
     var latitude = parseFloat(map_el.getAttribute('data-lat')),
         longitude = parseFloat(map_el.getAttribute('data-long'));
 

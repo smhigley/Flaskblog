@@ -48,12 +48,13 @@
 
     <header class="page-header" role="banner">
       <nav class="main-menu" role="navigation">
-        <a href="/" class="logo">{% include 'logo.svg' %}</a>
+        <a href="/" class="logo">{% include '_logo.svg' %}</a>
         <a href="#" class="mobile menu-trigger">Menu</a>
         <ul class="menu">
+          <li><a href="/">Home</a></li>
           <li><a href="/about">About</a></li>
-          <li><a href="/log">Log</a></li>
-          <li><a href="/contact">Contact</a></li>
+          <li><a href="{{ url_for('log') }}">Log</a></li>
+          <li><a href="{{ url_for('contact') }}">Contact</a></li>
         </ul>
       </nav>
       <!-- End header -->
@@ -70,6 +71,12 @@
         {% endif %}
       {% endwith %}
 
+      {% if g.user.is_authenticated() %}
+      <div class="admin-bar">
+        {% block adminbar %}{% endblock %}
+      </div>
+      {% endif %}
+
       {% block content %}{% endblock %}
     </div>
 
@@ -78,7 +85,6 @@
 
   </div><!-- /.container -->
 
-  <script src="http://openlayers.org/en/v3.6.0/build/ol.js" type="text/javascript"></script>
   <script src="/static/js/app.js" type="text/javascript"></script>
 </body>
 </html>

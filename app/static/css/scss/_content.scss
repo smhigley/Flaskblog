@@ -132,7 +132,7 @@ input[type=text], input[type=email], input[type=search], input[type=tel], input[
 // post excerpt
 .excerpt {
   position: relative;
-  min-height: 200px;
+  min-height: 240px;
   padding-left: 230px;
   padding-bottom: em-calc(40);
   border-bottom: 1px solid $grey;
@@ -156,13 +156,13 @@ input[type=text], input[type=email], input[type=search], input[type=tel], input[
     width: 200px;
     height: auto;
   }
+}
 
-  .meta {
-    margin: 0 0 em-calc(20);
-    @include clearfix;
-    color: darken($grey, 30%);
-    font-style: italic;
-  }
+.meta {
+  margin: 0 0 em-calc(20);
+  @include clearfix;
+  color: darken($grey, 30%);
+  font-style: italic;
 
   .author {
     float: left;
@@ -193,8 +193,8 @@ input[type=text], input[type=email], input[type=search], input[type=tel], input[
     @include transition(all 0.3s ease);
 
     &:hover, &:focus {
-      background-color: $blue;
-      border-color: $blue;
+      background-color: $green;
+      border-color: $green;
       color: #fff;
       &:before {
         color: #fff;

@@ -1,10 +1,8 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <p>Hi, {{user.nickname}}</p>
-
   {% for post in posts.items %}
-    {% include 'excerpt.html' %}
+    {% include '_excerpt.html' %}
   {% endfor %}
 
   <p class="center"><a href="{{ url_for('log') }}" class="button blog-link">View all posts</a></p>
@@ -12,5 +10,9 @@
 {% endblock %}
 
 {% block sidebar %}
-  {% include 'map.html' %}
+  {% include '_map.html' %}
+{% endblock %}
+
+{% block adminbar %}
+  {% include '_adminbar.html' %}
 {% endblock %}

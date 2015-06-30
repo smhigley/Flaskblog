@@ -6,5 +6,10 @@
 {% endblock %}
 
 {% block sidebar %}
-  {% include 'map.html' %}
+  {% include '_map.html' %}
+{% endblock %}
+
+{% block adminbar %}
+  <a href="{{ url_for('edit_page', slug=page.slug) }}" class="simple-button edit">Edit</a>
+  {% include '_adminbar.html' %}
 {% endblock %}

@@ -38,7 +38,9 @@ class Post(db.Model):
     return '<Post %r>' % (self.title)
 
   def get_thumbnail(self):
-    return self.image
+    extension = self.image.rfind('.')
+    thumb = self.image[:extension] + '_thumb' + self.image[extension:]
+    return thumb
 
 
 class Page(db.Model):

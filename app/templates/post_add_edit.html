@@ -5,42 +5,42 @@
   <form action="" method="post" name="post-form">
       {{ form.hidden_tag() }}
 
-      <div class="input-group">
-        <label>Post Title</label>
-        {{ form.title() }}
-        {% for error in form.title.errors %}
-          <div class="error">[{{ error }}]</div>
-        {% endfor %}
-      </div>
+    <div class="input-group {% if form.title.errors %}error{% endif %}">
+      <label>Post Title</label>
+      {{ form.title() }}
+      {% for error in form.title.errors %}
+        <div class="error-msg">{{ error }}</div>
+      {% endfor %}
+    </div>
 
-      <div class="input-group">
-        <label>Slug (must contain only letters, numbers, and dashes)</label>
-        {{ form.slug() }}
-        {% for error in form.slug.errors %}
-          <div class="error">[{{ error }}]</div>
-        {% endfor %}
-      </div>
+    <div class="input-group {% if form.slug.errors %}error{% endif %}">
+      <label>Slug (must contain only letters, numbers, and dashes)</label>
+      {{ form.slug() }}
+      {% for error in form.slug.errors %}
+        <div class="error-msg">{{ error }}</div>
+      {% endfor %}
+    </div>
 
-      <div class="input-group">
-        <label>Post Content</label>
-        {{ form.body(rows=8, cols=20) }}
-        {% for error in form.body.errors %}
-          <div class="error">[{{ error }}]</div>
-        {% endfor %}
-      </div>
+    <div class="input-group {% if form.body.errors %}error{% endif %}">
+      <label>Post Content</label>
+      {{ form.body(rows=8, cols=20) }}
+      {% for error in form.body.errors %}
+        <div class="error-msg">{{ error }}</div>
+      {% endfor %}
+    </div>
 
-      <div class="input-group">
-        <label>Featured image (resource slug)</label>
-        {{ form.image() }}
-        {% for error in form.image.errors %}
-          <div class="error">[{{ error }}]</div>
-        {% endfor %}
-      </div>
+    <div class="input-group {% if form.image.errors %}error{% endif %}">
+      <label>Featured image (resource slug)</label>
+      {{ form.image() }}
+      {% for error in form.image.errors %}
+        <div class="error-msg">{{ error }}</div>
+      {% endfor %}
+    </div>
 
-      <button type="submit">{{ action }} Post</button>
+    <button type="submit">{{ action }} Post</button>
   </form>
 {% endblock %}
 
 {% block sidebar %}
-  {% include 'map.html' %}
+  {% include '_map.html' %}
 {% endblock %}

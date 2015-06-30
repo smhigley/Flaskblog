@@ -5,7 +5,8 @@
   {% endif %}
   <div class="meta">
     <span class="author">{{ post.author.nickname }}</span>
-    <span class="date">{{ post.timestamp }}</span>
+    <span class="date">{{ post.timestamp.strftime('%B %-d, %Y') }}</span>
   </div>
-  {{ post.body|striptags|truncate(300) }}
+  <p>{{ post.body|striptags|truncate(300) }}</p>
+  <a href="button-simple">View Full Post</a>
 </article>
