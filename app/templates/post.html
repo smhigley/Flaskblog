@@ -19,5 +19,6 @@
 
 {% block adminbar %}
   <a href="{{ url_for('edit_post', slug=post.slug) }}" class="simple-button edit">Edit</a>
+  <a href="{{ url_for('delete_post', slug=post.slug) }}" class="simple-button delete">Delete</a>
   {% include '_adminbar.html' %}
 {% endblock %}

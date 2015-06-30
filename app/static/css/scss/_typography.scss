@@ -171,7 +171,7 @@ pre {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.button-simple {
+.simple-button {
   display: inline-block;
   padding: em-calc(4) em-calc(24);
   border: 1px solid darken($grey, 10%);
@@ -180,6 +180,7 @@ pre {
 
   &:hover, &:focus {
     background-color: $green;
+    color: #fff;
   }
 }
 

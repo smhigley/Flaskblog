@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 /**
  * 1. Set default font family to sans-serif.
@@ -590,7 +591,7 @@ pre {
   background-color: #e7ecef;
   line-height: 1.2; }
 
-.icon, .pagination .next:before, .pagination .prev:before, .image-gallery .thumbnail:after {
+.icon, .admin-bar a:before, .pagination .next:before, .pagination .prev:before, .image-gallery .thumbnail:after {
   font-family: 'icomoon';
   speak: none;
   font-style: normal;
@@ -601,14 +602,15 @@ pre {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
-.button-simple {
+.simple-button {
   display: inline-block;
   padding: 0.25em 1.5em;
   border: 1px solid #cfd4d7;
   background-color: #e7ecef;
   color: #2a3539; }
-  .button-simple:hover, .button-simple:focus {
-    background-color: #86c393; }
+  .simple-button:hover, .simple-button:focus {
+    background-color: #86c393;
+    color: #fff; }
 
 .ol-hidden, .ol-collapsed {
   position: absolute;
@@ -771,6 +773,35 @@ pre {
     display: inline-block;
     padding: 0 0.625em; }
 
+.admin-bar {
+  margin: -1.25em 0 3.125em;
+  text-align: center; }
+  .admin-bar a {
+    vertical-align: middle;
+    margin: 0 2px 4px;
+    padding: 0.25em 1em; }
+    .admin-bar a:before {
+      display: inline-block;
+      margin: 0 6px 0 -6px;
+      vertical-align: top;
+      font-size: 20px;
+      color: #2a3539; }
+    .admin-bar a:focus:before, .admin-bar a:hover:before {
+      color: #fff; }
+  .admin-bar .edit:before {
+    content: ""; }
+  .admin-bar .new:before {
+    content: ""; }
+  .admin-bar .delete:before {
+    content: ""; }
+  .admin-bar .help {
+    font-size: 0;
+    line-height: 0; }
+    .admin-bar .help:before {
+      content: "";
+      padding: 5px 8px;
+      margin: 0; }
+
 .sidebar .featured-image {
   position: absolute;
   top: 0;
@@ -888,6 +919,8 @@ input[type=text], input[type=email], input[type=search], input[type=tel], input[
     left: 0;
     width: 200px;
     height: auto; }
+  .excerpt p {
+    margin-bottom: 0.75em; }
 
 .meta {
   margin: 0 0 1.25em;
@@ -943,9 +976,9 @@ input[type=text], input[type=email], input[type=search], input[type=tel], input[
       line-height: 25px;
       color: #2a3539; }
   .pagination .prev:before {
-    content: "\e207"; }
+    content: ""; }
   .pagination .next:before {
-    content: "\e208"; }
+    content: ""; }
 
 .alerts {
   margin: 0 0 1.875em; }
@@ -1012,7 +1045,7 @@ input[type=text], input[type=email], input[type=search], input[type=tel], input[
     -o-transition: opacity 0.3s ease;
     transition: opacity 0.3s ease; }
   .image-gallery .thumbnail:after {
-    content: "\e069";
+    content: "";
     position: absolute;
     top: 50%;
     left: 50%;

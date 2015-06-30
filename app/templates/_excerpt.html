@@ -8,5 +8,5 @@
     <span class="date">{{ post.timestamp.strftime('%B %-d, %Y') }}</span>
   </div>
   <p>{{ post.body|striptags|truncate(300) }}</p>
-  <a href="button-simple">View Full Post</a>
+  <a href="{{ url_for('post', slug=post.slug) }}" class="simple-button">View Full Post</a>
 </article>

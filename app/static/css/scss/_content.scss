@@ -36,6 +36,50 @@
   }
 }
 
+// admin bar
+.admin-bar {
+  margin: em-calc(-20) 0 em-calc(50);
+  text-align: center;
+
+  a {
+    vertical-align: middle;
+    margin: 0 2px 4px;
+    padding: em-calc(4) em-calc(16);
+
+    &:before {
+      @extend .icon;
+      display: inline-block;
+      margin: 0 6px 0 -6px;
+      vertical-align: top;
+      font-size: 20px;
+      color: $dark;
+    }
+
+    &:focus:before, &:hover:before {
+      color: #fff;
+    }
+  }
+
+  .edit:before {
+    content: $icon-edit;
+  }
+  .new:before {
+    content: $icon-plus;
+  }
+  .delete:before {
+    content: $icon-delete;
+  }
+  .help {
+    font-size: 0;
+    line-height: 0;
+    &:before {
+      content: $icon-help;
+      padding: 5px 8px;
+      margin: 0;
+    }
+  }
+}
+
 // sidebar
 .sidebar {
   .featured-image {
@@ -156,6 +200,10 @@ input[type=text], input[type=email], input[type=search], input[type=tel], input[
     width: 200px;
     height: auto;
   }
+
+  p {
+    margin-bottom: em-calc(12);
+  }
 }
 
 .meta {
@@ -221,10 +269,10 @@ input[type=text], input[type=email], input[type=search], input[type=tel], input[
   }
 
   .prev:before {
-    content: "\e207";
+    content: $icon-left;
   }
   .next:before {
-    content: "\e208";
+    content: $icon-right;
   }
 }
 
@@ -295,7 +343,7 @@ input[type=text], input[type=email], input[type=search], input[type=tel], input[
     }
 
     &:after {
-      content: "\e069";
+      content: $icon-plus;
       @extend .icon;
       position: absolute;
       top: 50%;

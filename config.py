@@ -21,7 +21,7 @@ location = {
 }
 
 # Pagination
-POSTS_PER_PAGE = 2
+POSTS_PER_PAGE = 8
 
 # Timezone
 

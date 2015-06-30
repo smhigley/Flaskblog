@@ -122,6 +122,20 @@ def edit_page(slug):
 
   return render_template('page_add_edit.html', form=form, action='Edit')
 
+@app.route('/<slug>/delete')
+@login_required
+def delete_page(slug):
+  page = Page.query.filter_by(slug=slug).first()
+  title = page.title
+  if page is None:
+    flash('Page not found.')
+    return redirect(url_for('index'))
+
+  db.session.delete(page)
+  db.session.commit()
+  flash('"%s" has been deleted' % title)
+  return redirect(url_for('index'))
+
 # Posts
 @app.route('/log/<slug>')
 def post(slug):
