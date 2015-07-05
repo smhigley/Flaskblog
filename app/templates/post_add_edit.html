@@ -21,6 +21,14 @@
       {% endfor %}
     </div>
 
+    <div class="input-group {% if form.location.errors %}error{% endif %}">
+      <label>Location</label>
+      {{ form.location() }}
+      {% for error in form.location.errors %}
+        <div class="error-msg">{{ error }}</div>
+      {% endfor %}
+    </div>
+
     <div class="input-group {% if form.body.errors %}error{% endif %}">
       <label>Post Content</label>
       {{ form.body(rows=8, cols=20) }}

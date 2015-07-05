@@ -29,6 +29,7 @@ class Post(db.Model):
   id = db.Column(db.Integer, primary_key=True)
   title = db.Column(db.String(64))
   slug = db.Column(db.String(32))
+  location = db.Column(db.String(32), index=True)
   body = db.Column(db.String(140))
   image = db.Column(db.String(64))
   timestamp = db.Column(db.DateTime)

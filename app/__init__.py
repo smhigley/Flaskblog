@@ -30,3 +30,6 @@ app.config['LOCATION'] = location;
 # mail = Mail(app)
 
 from app import views, models
+
+if __name__ == "__main__":
+  app.run()

@@ -161,7 +161,7 @@ def add_post():
 
   if form.validate_on_submit():
     flash('Post created: %s' % form.title.data)
-    post = Post(title=form.title.data, slug=form.slug.data, body=form.body.data, image=form.image.data, timestamp=datetime.now(), author=g.user)
+    post = Post(title=form.title.data, slug=form.slug.data, location=form.location.data, body=form.body.data, image=form.image.data, timestamp=datetime.now(), author=g.user)
     db.session.add(post)
     db.session.commit()
     return redirect(url_for('post', slug=form.slug.data))
@@ -178,6 +178,7 @@ def edit_post(slug):
     flash('Page updated')
     post.title = form.title.data
     post.slug = form.slug.data
+    post.location = form.location.data
     post.body = form.body.data
     post.image = form.image.data
     db.session.commit()

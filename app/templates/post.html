@@ -4,7 +4,8 @@
   <h1>{{ post.title }}</h1>
   <div class="meta">
     <span class="author">{{ post.author.nickname }}</span> &bull;
-    <span class="date">{{ post.timestamp.strftime('%B %-d, %Y') }}</span>
+    <span class="date">{{ post.timestamp.strftime('%B %-d, %Y') }}</span> &bull;
+    <span class="location">{{ post.location }}</span>
   </div>
   {{ post.body|safe }}
 {% endblock %}
