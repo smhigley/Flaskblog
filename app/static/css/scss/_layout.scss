@@ -51,6 +51,7 @@ html {
   }
   @include bp(1300) {
     width: 860px;
+    padding: em-calc(80) em-calc(46);
   }
 }
 

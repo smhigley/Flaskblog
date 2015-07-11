@@ -74,13 +74,15 @@
   };
 
   ImageGallery.prototype.update = function(thumb) {
-    var old_img = this.featured.querySelector('img'),
+    var old_images = this.featured.querySelectorAll('img'),
         new_image = thumb.getAttribute('href');
 
-    old_img.classList.add('fade-out');
-    setTimeout(function() {
-      old_img.parentElement.removeChild(old_img);
-    }, 600);
+    for (var i = 0; i < old_images.length; i++) {
+      old_images[i].classList.add('fade-out');
+      setTimeout(function() {
+        old_images[i].parentElement.removeChild(old_images[i]);
+      }, 600);
+    };
 
     this.set_featured(new_image, thumb.getAttribute('alt'));
     this.el.querySelector('.current').classList.remove('current');

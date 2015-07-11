@@ -308,7 +308,7 @@ input[type=text], input[type=email], input[type=search], input[type=tel], input[
 
 // image gallery
 .image-gallery {
-  margin-bottom: em-calc(30);
+  margin: 0 em-calc(-16) em-calc(30);
 
   .featured-image {
     position: relative;

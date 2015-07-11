@@ -114,6 +114,12 @@ p, ul, ol, pre {
   line-height: 1.6;
 }
 
+.content {
+  p, ul, ol {
+    font-size: 18px;
+  }
+}
+
 li {
   margin-bottom: em-calc(8);
 }

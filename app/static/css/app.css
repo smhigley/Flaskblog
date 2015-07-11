@@ -444,7 +444,8 @@ html {
       width: 66.6666%; } }
   @media only screen and (min-width: 81.25em) {
     .container {
-      width: 860px; } }
+      width: 860px;
+      padding: 5em 2.875em; } }
 
 .sidebar {
   position: relative;
@@ -560,6 +561,9 @@ p, ul, ol, pre {
   margin: 0 0 1.875em;
   font-size: 16px;
   line-height: 1.6; }
+
+.content p, .content ul, .content ol {
+  font-size: 18px; }
 
 li {
   margin-bottom: 0.5em; }
@@ -1007,7 +1011,7 @@ input[type=text], input[type=email], input[type=search], input[type=tel], input[
     border-radius: 6px; }
 
 .image-gallery {
-  margin-bottom: 1.875em; }
+  margin: 0 -1em 1.875em; }
   .image-gallery .featured-image {
     position: relative;
     background-color: #e7ecef;
