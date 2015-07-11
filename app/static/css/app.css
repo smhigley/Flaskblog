@@ -1006,93 +1006,123 @@ input[type=text], input[type=email], input[type=search], input[type=tel], input[
     -moz-border-radius: 6px;
     border-radius: 6px; }
 
-.image-gallery .featured-image {
-  position: relative;
-  background-color: #e7ecef; }
-  .image-gallery .featured-image:after {
-    content: "";
-    display: block;
-    width: 100%;
-    padding-bottom: 66.66%; }
-  .image-gallery .featured-image img {
-    position: absolute;
-    opacity: 1;
-    filter: alpha(opacity=100);
-    -webkit-transition: opacity 0.4s ease;
-    -moz-transition: opacity 0.4s ease;
-    -ms-transition: opacity 0.4s ease;
-    -o-transition: opacity 0.4s ease;
-    transition: opacity 0.4s ease; }
-  .image-gallery .featured-image .loading, .image-gallery .featured-image .fade-out {
-    opacity: 0;
-    filter: alpha(opacity=0); }
-.image-gallery .thumbs {
-  padding: 0.625em 0;
-  margin: 0 -4px; }
-  .image-gallery .thumbs:before, .image-gallery .thumbs:after {
-    content: " ";
-    display: table; }
-  .image-gallery .thumbs:after {
-    clear: both; }
-.image-gallery .thumbnail {
-  position: relative;
-  display: block;
-  float: left;
-  width: 20%;
-  padding: 0 4px 4px; }
-  .image-gallery .thumbnail:before {
-    content: "";
-    position: absolute;
-    left: 4px;
-    right: 4px;
-    top: 0;
-    bottom: 4px;
+.image-gallery {
+  margin-bottom: 1.875em; }
+  .image-gallery .featured-image {
+    position: relative;
     background-color: #e7ecef;
-    z-index: 1;
-    opacity: 0;
-    filter: alpha(opacity=0);
-    -webkit-transition: opacity 0.3s ease;
-    -moz-transition: opacity 0.3s ease;
-    -ms-transition: opacity 0.3s ease;
-    -o-transition: opacity 0.3s ease;
-    transition: opacity 0.3s ease; }
-  .image-gallery .thumbnail:after {
-    content: "";
+    overflow: hidden; }
+    .image-gallery .featured-image:after {
+      content: "";
+      display: block;
+      width: 100%;
+      padding-bottom: 66.66%; }
+    .image-gallery .featured-image img {
+      position: absolute;
+      opacity: 1;
+      filter: alpha(opacity=100);
+      -webkit-transition: opacity 0.4s ease;
+      -moz-transition: opacity 0.4s ease;
+      -ms-transition: opacity 0.4s ease;
+      -o-transition: opacity 0.4s ease;
+      transition: opacity 0.4s ease; }
+    .image-gallery .featured-image .loading, .image-gallery .featured-image .fade-out {
+      opacity: 0;
+      filter: alpha(opacity=0); }
+  .image-gallery .caption {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 50px;
-    height: 50px;
-    background-color: #00a6a6;
-    color: #fff;
-    font-size: 40px;
-    line-height: 50px;
-    text-align: center;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 0.625em 1.5em;
+    background-color: rgba(231, 236, 239, 0.75);
+    font-style: italic;
     z-index: 2;
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
-    border-radius: 50%;
-    -webkit-transform: translate(-50%, -50%) scale(0);
-    -moz-transform: translate(-50%, -50%) scale(0);
-    -ms-transform: translate(-50%, -50%) scale(0);
-    -o-transform: translate(-50%, -50%) scale(0);
-    transform: translate(-50%, -50%) scale(0);
-    -webkit-transition: all 0.3s ease;
-    -moz-transition: all 0.3s ease;
-    -ms-transition: all 0.3s ease;
-    -o-transition: all 0.3s ease;
-    transition: all 0.3s ease; }
-  .image-gallery .thumbnail img {
-    display: block; }
-  .image-gallery .thumbnail:hover:before {
-    background-color: #00a6a6;
-    opacity: 0.5;
-    filter: alpha(opacity=50); }
-  .image-gallery .thumbnail:hover:after {
-    -webkit-transform: translate(-50%, -50%) scale(1);
-    -moz-transform: translate(-50%, -50%) scale(1);
-    -ms-transform: translate(-50%, -50%) scale(1);
-    -o-transform: translate(-50%, -50%) scale(1);
-    transform: translate(-50%, -50%) scale(1); }
+    -webkit-transform: translate(0, 100%);
+    -moz-transform: translate(0, 100%);
+    -ms-transform: translate(0, 100%);
+    -o-transform: translate(0, 100%);
+    transform: translate(0, 100%);
+    -webkit-transition: all 0.4s ease;
+    -moz-transition: all 0.4s ease;
+    -ms-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+    transition: all 0.4s ease; }
+    .image-gallery .caption.hidden {
+      display: none; }
+  .image-gallery .featured-image:hover .caption {
+    -webkit-transform: translate(0, 0);
+    -moz-transform: translate(0, 0);
+    -ms-transform: translate(0, 0);
+    -o-transform: translate(0, 0);
+    transform: translate(0, 0); }
+  .image-gallery .thumbs {
+    padding: 0.625em 0;
+    margin: 0 -4px; }
+    .image-gallery .thumbs:before, .image-gallery .thumbs:after {
+      content: " ";
+      display: table; }
+    .image-gallery .thumbs:after {
+      clear: both; }
+  .image-gallery .thumbnail {
+    position: relative;
+    display: block;
+    float: left;
+    width: 20%;
+    padding: 0 4px 4px; }
+    .image-gallery .thumbnail:before {
+      content: "";
+      position: absolute;
+      left: 4px;
+      right: 4px;
+      top: 0;
+      bottom: 4px;
+      background-color: #e7ecef;
+      z-index: 1;
+      opacity: 0;
+      filter: alpha(opacity=0);
+      -webkit-transition: opacity 0.3s ease;
+      -moz-transition: opacity 0.3s ease;
+      -ms-transition: opacity 0.3s ease;
+      -o-transition: opacity 0.3s ease;
+      transition: opacity 0.3s ease; }
+    .image-gallery .thumbnail:after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 50px;
+      height: 50px;
+      background-color: #00a6a6;
+      color: #fff;
+      font-size: 40px;
+      line-height: 50px;
+      text-align: center;
+      z-index: 2;
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+      border-radius: 50%;
+      -webkit-transform: translate(-50%, -50%) scale(0);
+      -moz-transform: translate(-50%, -50%) scale(0);
+      -ms-transform: translate(-50%, -50%) scale(0);
+      -o-transform: translate(-50%, -50%) scale(0);
+      transform: translate(-50%, -50%) scale(0);
+      -webkit-transition: all 0.3s ease;
+      -moz-transition: all 0.3s ease;
+      -ms-transition: all 0.3s ease;
+      -o-transition: all 0.3s ease;
+      transition: all 0.3s ease; }
+    .image-gallery .thumbnail img {
+      display: block; }
+    .image-gallery .thumbnail:hover:before {
+      background-color: #00a6a6;
+      opacity: 0.5;
+      filter: alpha(opacity=50); }
+    .image-gallery .thumbnail:hover:after {
+      -webkit-transform: translate(-50%, -50%) scale(1);
+      -moz-transform: translate(-50%, -50%) scale(1);
+      -ms-transform: translate(-50%, -50%) scale(1);
+      -o-transform: translate(-50%, -50%) scale(1);
+      transform: translate(-50%, -50%) scale(1); }
 
 

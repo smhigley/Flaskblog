@@ -1862,7 +1862,7 @@ wr.prototype.once=wr.prototype.A;wr.prototype.un=wr.prototype.u;wr.prototype.unB
   };
 
   ImageGallery.prototype.update = function(thumb) {
-    var old_img = this.featured.children[0],
+    var old_img = this.featured.querySelector('img'),
         new_image = thumb.getAttribute('href');
 
     old_img.classList.add('fade-out');
@@ -1870,13 +1870,12 @@ wr.prototype.once=wr.prototype.A;wr.prototype.un=wr.prototype.u;wr.prototype.unB
       old_img.parentElement.removeChild(old_img);
     }, 600);
 
-    this.set_featured(new_image);
+    this.set_featured(new_image, thumb.getAttribute('alt'));
     this.el.querySelector('.current').classList.remove('current');
     thumb.classList.add('current');
-
   };
 
-  ImageGallery.prototype.set_featured = function(src) {
+  ImageGallery.prototype.set_featured = function(src, caption) {
     var self = this;
 
     var img = document.createElement('img');
@@ -1894,6 +1893,15 @@ wr.prototype.once=wr.prototype.A;wr.prototype.un=wr.prototype.u;wr.prototype.unB
       img.classList.remove('loading');
     };
     img.src = src;
+
+    // caption
+    if (caption) {
+      this.caption.classList.remove('hidden');
+      this.caption.innerHTML = caption;
+    } else {
+      this.caption.classList.add('hidden');
+    }
+
   };
 
   ImageGallery.prototype.create_thumbs = function() {
@@ -1915,6 +1923,8 @@ wr.prototype.once=wr.prototype.A;wr.prototype.un=wr.prototype.u;wr.prototype.unB
       // make thumbnail
       var thumbnail = document.createElement('a');
       thumbnail.setAttribute('href', this.images[i]);
+      if (this.captions && this.captions[i])
+        thumbnail.setAttribute('alt', this.captions[i]);
       thumbnail.classList.add('thumbnail');
       if (i === 0) {
         thumbnail.classList.add('current');
@@ -1946,11 +1956,19 @@ wr.prototype.once=wr.prototype.A;wr.prototype.un=wr.prototype.u;wr.prototype.unB
     var image_data = this.el.getAttribute('data-images');
     this.images = image_data.split(', ');
 
+    var caption_data = this.el.getAttribute('data-captions');
+    this.captions = [];
+    if (caption_data) this.captions = caption_data.split(', ');
+
     this.featured = document.createElement('div');
     this.featured.classList.add('featured-image');
     this.el.appendChild(this.featured);
 
-    this.set_featured(this.images[0]);
+    this.caption = document.createElement('div');
+    this.caption.classList.add('caption');
+    this.featured.appendChild(this.caption);
+
+    this.set_featured(this.images[0], this.captions[0]);
     this.create_thumbs();
   };
 

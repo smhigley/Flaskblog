@@ -29,3 +29,6 @@ MAIL_PORT = None
 MAIL_USERNAME = None
 MAIL_PASSWORD = None
 ADMIN_EMAILS = ['']
+
+# Google Analytics
+GA_ID = ''

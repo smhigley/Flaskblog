@@ -308,9 +308,12 @@ input[type=text], input[type=email], input[type=search], input[type=tel], input[
 
 // image gallery
 .image-gallery {
+  margin-bottom: em-calc(30);
+
   .featured-image {
     position: relative;
     background-color: $grey;
+    overflow: hidden;
 
     &:after {
       content: "";
@@ -328,6 +331,25 @@ input[type=text], input[type=email], input[type=search], input[type=tel], input[
     .loading, .fade-out {
       @include opacity(0);
     }
+  }
+
+  .caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: em-calc(10) em-calc(24);
+    background-color: rgba($grey, 0.75);
+    font-style: italic;
+    z-index: 2;
+    @include translate(0, 100%);
+    @include transition(all 0.4s ease);
+    &.hidden {
+      display: none;
+    }
+  }
+  .featured-image:hover .caption {
+    @include translate(0, 0);
   }
 
   .thumbs {

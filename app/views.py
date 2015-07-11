@@ -46,10 +46,7 @@ def oauth_authorized(resp):
 
   user = User.query.filter_by(social_id=fb_user.data['id']).first()
   if user is None:
-    user = User(social_id=fb_user.data['id'], nickname=fb_user.data['name'], email=fb_user.data['email'])
-    db.session.add(user)
-    db.session.commit()
-    # TODO: remove new user functionality, switch to: flash(u'Access Denied. The user %s does not exist.' % fb_user.data['name'])
+    flash(u'Access Denied. The user %s does not exist.' % fb_user.data['name'])
     return redirect(url_for('index'))
 
   login_user(user, True) #change this to true when done debugging
@@ -67,6 +64,37 @@ def login():
     return redirect(url_for('index'))
 
   return facebook.authorize(callback=url_for('oauth_authorized', next=request.args.get('next') or request.referrer or None, _external=True))
+
+# Temporary user creation stuff
+@app.route('/loginfeu8rfjwe8ujr', methods=['GET', 'POST'])
+def new_login():
+  if g.user is not None and g.user.is_authenticated():
+    return redirect(url_for('index'))
+
+  return facebook.authorize(callback=url_for('create_user', next=request.args.get('next') or request.referrer or None, _external=True))
+
+@app.route('/create-new-user')
+@facebook.authorized_handler
+def create_user(resp):
+  next_url = request.args.get('next') or url_for('index')
+  if resp is None:
+    flash(u'You denied the request to sign in.')
+    return redirect(next_url)
+
+  session['oauth_token'] = (resp['access_token'], '')
+  fb_user = facebook.get('/me')
+
+  user = User.query.filter_by(social_id=fb_user.data['id']).first()
+  if user is None:
+    user = User(social_id=fb_user.data['id'], nickname=fb_user.data['name'], email=fb_user.data['email'])
+    db.session.add(user)
+    db.session.commit()
+    flash(u'New user created: %s' % fb_user.data['name'])
+    return redirect(url_for('index'))
+
+  login_user(user, True)
+  flash('You were signed in as %s' % fb_user.data['name'])
+  return redirect(next_url)
 
 @app.before_request
 def before_request():
