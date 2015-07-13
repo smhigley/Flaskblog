@@ -45,6 +45,31 @@
       @include border-radius(6px);
     }
   }
+
+  .more-info {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 0;
+    line-height: 0;
+    width: 30px;
+    height: 30px;
+    @include border-radius(50%);
+    background-color: $blue;
+    z-index: 5;
+    &:after {
+      content: "?";
+      display: block;
+      color: #fff;
+      font-size: 20px;
+      font-weight: bold;
+      line-height: 30px;
+      text-align: center;
+    }
+    &:hover {
+      background-color: $green;
+    }
+  }
 }
 
 @include keyframes(map-marker) {

@@ -138,7 +138,7 @@ def add_page():
     db.session.commit()
     return redirect(url_for('page', slug=form.slug.data))
 
-  return render_template('page_add_edit.html', form=form, action='Create')
+  return render_template('page_add_edit.html', form=form, action='Create', title='New Page')
 
 @app.route('/<slug>/edit', methods=['GET', 'POST'])
 @login_required
@@ -154,7 +154,7 @@ def edit_page(slug):
     db.session.commit()
     return redirect(url_for('page', slug=form.slug.data))
 
-  return render_template('page_add_edit.html', form=form, action='Edit')
+  return render_template('page_add_edit.html', form=form, action='Edit', title='Edit Page')
 
 @app.route('/<slug>/delete')
 @login_required
@@ -177,7 +177,7 @@ def post(slug):
   if post is None:
     flash('The URL %s was not found' % slug)
     return redirect(url_for('index'))
-  return render_template('post.html', post=post)
+  return render_template('post.html', post=post, title=post.title)
 
 @app.route('/log/new', methods=['GET', 'POST'])
 @login_required
@@ -194,7 +194,7 @@ def add_post():
     db.session.commit()
     return redirect(url_for('post', slug=form.slug.data))
 
-  return render_template('post_add_edit.html', form=form, action='Create')
+  return render_template('post_add_edit.html', form=form, action='Create', title='New Post')
 
 @app.route('/log/<slug>/edit', methods=['GET', 'POST'])
 @login_required
@@ -212,7 +212,7 @@ def edit_post(slug):
     db.session.commit()
     return redirect(url_for('post', slug=form.slug.data))
 
-  return render_template('post_add_edit.html', form=form, action='Edit')
+  return render_template('post_add_edit.html', form=form, action='Edit', title='Edit Post')
 
 @app.route('/log/<slug>/delete')
 @login_required

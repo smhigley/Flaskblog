@@ -451,7 +451,7 @@ html {
   position: relative;
   width: 100%;
   padding-bottom: 33%;
-  background-color: #00a6a6; }
+  background-color: #66c9c9; }
   @media only screen and (min-width: 48.75em) {
     .sidebar {
       position: fixed;
@@ -687,6 +687,29 @@ pre {
       -webkit-border-radius: 6px;
       -moz-border-radius: 6px;
       border-radius: 6px; }
+  #map .more-info {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 0;
+    line-height: 0;
+    width: 30px;
+    height: 30px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    background-color: #00a6a6;
+    z-index: 5; }
+    #map .more-info:after {
+      content: "?";
+      display: block;
+      color: #fff;
+      font-size: 20px;
+      font-weight: bold;
+      line-height: 30px;
+      text-align: center; }
+    #map .more-info:hover {
+      background-color: #86c393; }
 
 @-webkit-keyframes map-marker {
   0% {
