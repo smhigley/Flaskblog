@@ -12,11 +12,11 @@
   <meta name="keywords" content="">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="">
-  <meta property="og:description" content="">
-  <meta property="og:image" content="">
-  <meta property="og:type" content="">
-  <meta property="og:site_name" content="">
+  <meta property="og:title" content="{{title}}">
+  <meta property="og:description" content="{% if post is defined %}{{ post.body|striptags|truncate(60) }}{% else %}The Long Trip{% endif %}">
+  <meta property="og:image" content="{% if post is defined %}http://thelongtrip.org{{ post.image }}{% endif %}">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="The Long Trip">
 
   <!-- May the source be with you! -->
 
@@ -26,17 +26,15 @@
   <link rel="dns-prefetch" href="//ajax.googleapis.com">
   <link rel="sitemap" href="/sitemap.xml" type="application/xml" title="Sitemap">
 
-  <link rel="icon" href="/static/images/favicon.png" />
+  <link rel="icon" type="image/png" href="/static/images/favicon-128x128.png" sizes="128x128">
+  <link rel="icon" type="image/png" href="/static/images/favicon-64x64.png" sizes="64x64">
+  <link rel="icon" type="image/png" href="/static/images/favicon-16x16.png" sizes="16x16">
+  <link rel="icon" type="image/png" href="/static/images/favicon-32x32.png" sizes="32x32">
 
   <link rel="stylesheet" href="/static/css/app.css">
   <link href='http://fonts.googleapis.com/css?family=Fjalla+One|Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
 
   <script src="/static/js/modernizr.custom.js"></script>
-
-  <link rel="icon" type="image/png" href="/static/images/favicon-128x128.png" sizes="128x128">
-  <link rel="icon" type="image/png" href="/static/images/favicon-64x64.png" sizes="64x64">
-  <link rel="icon" type="image/png" href="/static/images/favicon-16x16.png" sizes="16x16">
-  <link rel="icon" type="image/png" href="/static/images/favicon-32x32.png" sizes="32x32">
 
   {# Markdown editor javascript, if logged in
   {% if g.user.is_authenticated() %}
@@ -54,7 +52,7 @@
     <header class="page-header" role="banner">
       <nav class="main-menu" role="navigation">
         <a href="/" class="logo">{% include '_logo.svg' %}</a>
-        <a href="#" class="mobile menu-trigger">Menu</a>
+        <!--<a href="#" class="mobile menu-trigger">Menu</a>-->
         <ul class="menu">
           <li><a href="/">Home</a></li>
           <li><a href="/about">About</a></li>

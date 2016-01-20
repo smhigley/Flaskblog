@@ -34,5 +34,9 @@
 {% endblock %}
 
 {% block sidebar %}
-  {% include '_map.html' %}
+  {% if post and post.image: %}
+    <div class="featured-image" style="background-image:url({{post.image}})"></div>
+  {% else %}
+    {% include '_map.html' %}
+  {% endif %}
 {% endblock %}

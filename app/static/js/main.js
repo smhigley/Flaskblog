@@ -78,9 +78,12 @@
         new_image = thumb.getAttribute('href');
 
     for (var i = 0; i < old_images.length; i++) {
-      old_images[i].classList.add('fade-out');
+      var img = old_images[i];
+      img.classList.add('fade-out');
       setTimeout(function() {
-        old_images[i].parentElement.removeChild(old_images[i]);
+        if (img) {
+          img.parentElement.removeChild(img);
+        }
       }, 600);
     };
 
@@ -93,7 +96,8 @@
     var self = this;
 
     var img = document.createElement('img');
-    img.classList.add('loading');
+    img.classList.add('fade-in');
+    this.el.classList.add('loading');
 
     this.featured.appendChild(img);
 
@@ -104,7 +108,8 @@
       img.style.width = dimensions.width;
       img.style.height = dimensions.height;
 
-      img.classList.remove('loading');
+      img.classList.remove('fade-in');
+      self.el.classList.remove('loading');
     };
     img.src = src;
 
@@ -153,7 +158,6 @@
       var clicked_thumb = get_parent(e.target, 'thumbnail', thumb_container);
       if (clicked_thumb) {
         e.preventDefault();
-        console.log ('clicked thumb');
 
         if (clicked_thumb.classList.contains('current')) return;
 

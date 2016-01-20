@@ -46,17 +46,31 @@
     }
   }
 
-  .more-info {
+  .more-info, .gmap-link {
     position: absolute;
     bottom: 10px;
-    right: 10px;
+    background-color: $blue;
+    z-index: 5;
+    &:hover {
+      //background-color: $green;
+    }
+    &:before {
+      @extend .button:before;
+      top: -5px;
+      bottom: -5px;
+      left: -5px;
+      right: -5px;
+      border-width: 3px;
+    }
+  }
+
+  .more-info {
+    right: 15px;
     font-size: 0;
     line-height: 0;
     width: 30px;
     height: 30px;
     @include border-radius(50%);
-    background-color: $blue;
-    z-index: 5;
     &:after {
       content: "?";
       display: block;
@@ -66,8 +80,23 @@
       line-height: 30px;
       text-align: center;
     }
-    &:hover {
-      background-color: $green;
+    &:before {
+      @include scale(0.6);
+      @include border-radius(50%);
+    }
+  }
+  .gmap-link {
+    right: 60px;
+    padding: 0 em-calc(10);
+    @include border-radius(6px);
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 30px;
+    text-transform: uppercase;
+    &:before {
+      @include transform(scale(0.9, 0.7));
+      @include border-radius(10px);
     }
   }
 }

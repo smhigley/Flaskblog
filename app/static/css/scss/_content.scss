@@ -179,6 +179,7 @@ input[type=text], input[type=email], input[type=search], input[type=tel], input[
   padding-bottom: em-calc(40);
   border-bottom: 1px solid $grey;
   margin-bottom: em-calc(40);
+  @include clearfix;
 
   @include bp($bp-excerpt) {
     position: relative;
@@ -310,6 +311,33 @@ input[type=text], input[type=email], input[type=search], input[type=tel], input[
 .image-gallery {
   margin: 0 em-calc(-16) em-calc(30);
 
+  &.loading .featured-image {
+    &:before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 80px;
+      height: 80px;
+      margin: -40px 0 0 -40px;
+      background-color: $blue;
+      @include border-radius(50%);
+      @include animation(gallery-loading 2s infinite);
+    }
+  }
+
+  @include keyframes(gallery-loading) {
+    0% {
+      @include scale(0);
+      @include opacity(1);
+    }
+    100% {
+      //border-width: 3px;
+      @include scale(1);
+      @include opacity(0);
+    }
+  }
+
   .featured-image {
     position: relative;
     background-color: $grey;
@@ -328,7 +356,7 @@ input[type=text], input[type=email], input[type=search], input[type=tel], input[
       @include transition(opacity 0.4s ease);
     }
 
-    .loading, .fade-out {
+    .fade-in, .fade-out {
       @include opacity(0);
     }
   }

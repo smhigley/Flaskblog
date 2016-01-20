@@ -13,7 +13,7 @@ class PostForm(Form):
   title = StringField('title', validators=[validators.DataRequired()])
   slug = StringField('slug', validators=[validators.DataRequired(), validators.Regexp('[\w-]+$', message="The slug must contain only letters, numbers, and dashes")])
   location = StringField('location')
-  categories = RadioField('category', choices=POST_CATEGORIES)
+  # categories = RadioField('category', choices=POST_CATEGORIES)
   # body = PageDownField('body', validators=[validators.DataRequired()])
   body = TextAreaField('body', validators=[validators.DataRequired()])
   image = StringField('image')
